@@ -8,6 +8,7 @@ import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 type ArticleValueTypes = {
   title: string;
+  coverPhoto: string;
   description: string;
   body: string;
 };
@@ -17,10 +18,19 @@ type ViewData = {
 };
 
 const ArticleView: React.FC<ViewData> = ({ data }) => {
+  console.log(data);
+  const imageStyles = {
+    backgroundImage: `url(${data.coverPhoto})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: '400px',
+  };
+
   return (
     <>
       <h1 className="mb-3">{data.title}</h1>
-      <h3 className="mb-3">{data.description}</h3>
+      <div className="mb-3" style={imageStyles}></div>
+      <p className="mb-3">{data.description}</p>
       <ReactMarkdown
         children={data.body}
         components={{

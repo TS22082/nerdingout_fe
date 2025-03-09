@@ -1,4 +1,4 @@
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import toggleActiveStyling from '../../../helpers/toggleActiveStyling.ts';
@@ -11,10 +11,6 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const layoutStyle = {
     minHeight: '100vh',
     height: '100vh',
-  };
-
-  const bodyStyle = {
-    margin: '25px 25%',
   };
 
   const location = useLocation();
@@ -55,7 +51,18 @@ const Layout: React.FC<LayoutProps> = (props) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div style={bodyStyle}>{props.children}</div>
+      <Container className="pt-3">
+        <Row>
+          <Col
+            lg={{
+              span: 6,
+              offset: 3,
+            }}
+          >
+            {props.children}
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

@@ -8,6 +8,7 @@ const useNewPostPageData = () => {
 
   const [formState, setFormState] = useState({
     title: '',
+    coverPhoto: '',
     description: '',
     body: '',
   });

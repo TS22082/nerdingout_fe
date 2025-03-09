@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 type NewArticleForm = {
   formState: {
     title: string;
+    coverPhoto: string;
     description: string;
     body: string;
   };
@@ -23,6 +24,18 @@ const NewArticleForm: React.FC<NewArticleForm> = ({
           placeholder="Title ..."
           value={formState.title}
           onChange={(e) => handleFormChange('title', e.currentTarget.value)}
+        />
+      </Form.Group>
+      <Form.Group className="my-3">
+        <Form.Label>Cover Photo</Form.Label>
+        <Form.Control
+          required
+          type="text"
+          placeholder="Enter address for a photo ..."
+          value={formState.coverPhoto}
+          onChange={(e) =>
+            handleFormChange('coverPhoto', e.currentTarget.value)
+          }
         />
       </Form.Group>
       <Form.Group className="mb-3">
