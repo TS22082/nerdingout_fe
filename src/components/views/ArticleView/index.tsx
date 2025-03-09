@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React from 'react';
 
 type ArticleValueTypes = {
   title: string;
@@ -18,7 +19,6 @@ type ViewData = {
 };
 
 const ArticleView: React.FC<ViewData> = ({ data }) => {
-  console.log(data);
   const imageStyles = {
     backgroundImage: `url(${data.coverPhoto})`,
     backgroundRepeat: 'no-repeat',
