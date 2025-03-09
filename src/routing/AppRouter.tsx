@@ -4,6 +4,9 @@ import Layout from '../components/containers/Layout';
 
 const AppRouter = () => {
   const AuthPage = lazy(() => import('../components/pages/AuthPage'));
+  const VerifyAuthPage = lazy(
+    () => import('../components/pages/VerifyAuthPage')
+  );
   const LandingPage = lazy(() => import('../components/pages/LandingPage'));
   const NewPostPage = lazy(() => import('../components/pages/NewPostPage'));
   const EditPostPage = lazy(() => import('../components/pages/EditPostPage'));
@@ -16,7 +19,7 @@ const AppRouter = () => {
       <Layout>
         <Routes>
           <Route
-            path="/"
+            path=""
             element={
               <Suspense fallback="Loading ...">
                 <LandingPage />
@@ -24,7 +27,7 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/about"
+            path="about"
             element={
               <Suspense fallback="Loading ...">
                 <h1>about</h1>
@@ -32,21 +35,33 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/support"
+            path="support"
             element={
               <Suspense fallback="Loading ...">
                 <h1>support</h1>
               </Suspense>
             }
           />
-          <Route
-            path="/auth"
-            element={
-              <Suspense fallback="Loading ...">
-                <AuthPage />
-              </Suspense>
-            }
-          />
+
+          <Route path="auth">
+            <Route
+              path=""
+              element={
+                <Suspense fallback="Loading ...">
+                  <AuthPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="verify_gh"
+              element={
+                <Suspense fallback="Loading ...">
+                  <VerifyAuthPage type="github" />
+                </Suspense>
+              }
+            />
+          </Route>
+
           <Route
             path="/new"
             element={
