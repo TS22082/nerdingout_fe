@@ -1,4 +1,4 @@
-import { useZustandState } from '../../../hooks/useZustandState.ts';
+import { useUserId } from '../../../hooks/state/useUserId.ts';
 import { useNavigate } from 'react-router-dom';
 
 type VerifyAuthPageData = {
@@ -6,7 +6,7 @@ type VerifyAuthPageData = {
 };
 
 const useVerifyAuthPageData = ({ type }: VerifyAuthPageData) => {
-  const { setUserId } = useZustandState();
+  const { setUserId } = useUserId();
   const navigate = useNavigate();
 
   (async () => {

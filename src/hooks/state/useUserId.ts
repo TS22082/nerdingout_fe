@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 
-export interface AppState {
+type UidState = {
   userId: string;
   setUserId: (userId: string) => void;
-}
+};
 
-export const useZustandState = create<AppState>((set) => ({
+export const useUserId = create<UidState>((set) => ({
   userId: '',
   setUserId: (id: string) => {
     set(() => ({ userId: id }));

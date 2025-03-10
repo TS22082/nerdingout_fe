@@ -1,10 +1,10 @@
-import useArticles from '../../../hooks/useArticles.ts';
+import useArticles from '../../../hooks/api/useArticles.ts';
 import { useEffect } from 'react';
-import { useZustandState } from '../../../hooks/useZustandState.ts';
+import { useUserId } from '../../../hooks/state/useUserId.ts';
 
 const LandingPage = () => {
   const { articles } = useArticles();
-  const { userId } = useZustandState();
+  const { userId } = useUserId();
 
   useEffect(() => {
     console.log('LandingPage ==>', articles);
