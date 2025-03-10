@@ -1,34 +1,43 @@
+import { useZustandState } from '../../../hooks/useZustandState.ts';
+import { useNavigate } from 'react-router-dom';
+
 type VerifyAuthPageData = {
   type: 'linkedin' | 'github' | 'google';
 };
 
-const useVerifyAuthPageData = async ({ type }: VerifyAuthPageData) => {
-  if (type === 'github') {
-    const queryParam = new URLSearchParams(window.location.search);
-    const code = queryParam.get('code');
+const useVerifyAuthPageData = ({ type }: VerifyAuthPageData) => {
+  const { setUserId } = useZustandState();
+  const navigate = useNavigate();
 
-    const baseUrl = import.meta.env.VITE_API_BASE_URL;
-    const response = await fetch(`${baseUrl}/auth/gh?code=${code}`);
+  (async () => {
+    if (type === 'github') {
+      const queryParam = new URLSearchParams(window.location.search);
+      const code = queryParam.get('code');
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+      const baseUrl = import.meta.env.VITE_API_BASE_URL;
+      const response = await fetch(`${baseUrl}/auth/gh?code=${code}`);
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setUserId(data.user.id);
+
+      localStorage.setItem('access_token', data.token);
+      return navigate('/');
     }
 
-    const data = await response.json();
+    if (type === 'google') {
+      console.log('type ==> ', type);
+      return;
+    }
 
-    console.log('data ==> ', data);
-    return;
-  }
-
-  if (type === 'google') {
-    console.log('type ==> ', type);
-    return;
-  }
-
-  if (type === 'linkedin') {
-    console.log('type ==> ', type);
-    return;
-  }
+    if (type === 'linkedin') {
+      console.log('type ==> ', type);
+      return;
+    }
+  })();
 };
 
 export default useVerifyAuthPageData;

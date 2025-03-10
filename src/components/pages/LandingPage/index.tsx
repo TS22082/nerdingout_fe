@@ -1,12 +1,15 @@
 import useArticles from '../../../hooks/useArticles.ts';
 import { useEffect } from 'react';
+import { useZustandState } from '../../../hooks/useZustandState.ts';
 
 const LandingPage = () => {
   const { articles } = useArticles();
+  const { userId } = useZustandState();
 
   useEffect(() => {
-    console.log('LandingPage', articles);
-  }, [articles]);
+    console.log('LandingPage ==>', articles);
+    console.log('Users ID ==>', userId);
+  }, [articles, userId]);
 
   return (
     <div>
