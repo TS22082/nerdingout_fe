@@ -2,7 +2,7 @@ import { useUserId } from '../../../hooks/state/useUserId.ts';
 import { useNavigate } from 'react-router-dom';
 
 type VerifyAuthPageData = {
-  type: 'linkedin' | 'github' | 'google';
+  type: 'github' | 'google' | 'linkedin';
 };
 
 const useVerifyAuthPageData = ({ type }: VerifyAuthPageData) => {

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../components/containers/Layout';
+import LoadingContainer from '../components/containers/LoadingContainer';
 
 const AppRouter = () => {
   const AuthPage = lazy(() => import('../components/pages/AuthPage'));
@@ -21,7 +22,7 @@ const AppRouter = () => {
           <Route
             path=""
             element={
-              <Suspense fallback="Loading ...">
+              <Suspense fallback={<LoadingContainer />}>
                 <LandingPage />
               </Suspense>
             }
@@ -29,7 +30,7 @@ const AppRouter = () => {
           <Route
             path="about"
             element={
-              <Suspense fallback="Loading ...">
+              <Suspense fallback={<LoadingContainer />}>
                 <h1>about</h1>
               </Suspense>
             }
@@ -37,7 +38,7 @@ const AppRouter = () => {
           <Route
             path="support"
             element={
-              <Suspense fallback="Loading ...">
+              <Suspense fallback={<LoadingContainer />}>
                 <h1>support</h1>
               </Suspense>
             }
@@ -47,7 +48,7 @@ const AppRouter = () => {
             <Route
               path=""
               element={
-                <Suspense fallback="Loading ...">
+                <Suspense fallback={<LoadingContainer />}>
                   <AuthPage />
                 </Suspense>
               }
@@ -55,7 +56,7 @@ const AppRouter = () => {
             <Route
               path="verify_gh"
               element={
-                <Suspense fallback="Loading ...">
+                <Suspense fallback={<LoadingContainer />}>
                   <VerifyAuthPage type="github" />
                 </Suspense>
               }
@@ -65,7 +66,7 @@ const AppRouter = () => {
           <Route
             path="/new"
             element={
-              <Suspense fallback="Loading ...">
+              <Suspense fallback={<LoadingContainer />}>
                 <NewPostPage />
               </Suspense>
             }
@@ -73,7 +74,7 @@ const AppRouter = () => {
           <Route
             path="/edit"
             element={
-              <Suspense fallback="Loading ...">
+              <Suspense fallback={<LoadingContainer />}>
                 <EditPostPage />
               </Suspense>
             }
@@ -81,7 +82,7 @@ const AppRouter = () => {
           <Route
             path="/delete"
             element={
-              <Suspense fallback="Loading ...">
+              <Suspense fallback={<LoadingContainer />}>
                 <DeletePostPage />
               </Suspense>
             }

@@ -1,5 +1,6 @@
 import React from 'react';
 import useVerifyAuthAPageData from './useVerifyAuthAPageData.ts';
+import LoadingContainer from '../../containers/LoadingContainer';
 
 type VerifyAuthPageProps = {
   type: 'github' | 'google' | 'linkedin';
@@ -8,7 +9,7 @@ type VerifyAuthPageProps = {
 const VerifyAuthPage: React.FC<VerifyAuthPageProps> = ({ type }) => {
   useVerifyAuthAPageData({ type });
 
-  return <h1>Loading ...</h1>;
+  return <LoadingContainer />;
 };
 
 export default VerifyAuthPage;
