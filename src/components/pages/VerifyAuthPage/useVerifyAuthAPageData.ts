@@ -22,8 +22,10 @@ const useVerifyAuthPageData = ({ type }: VerifyAuthPageData) => {
       }
 
       const data = await response.json();
-      setUserId(data.user.id);
 
+      if (!data?.user?.id || !data.token) return;
+
+      setUserId(data.user.id);
       localStorage.setItem('access_token', data.token);
       return navigate('/');
     }
