@@ -17,14 +17,17 @@ const useVerifyAuthPageData = async ({ type }: VerifyAuthPageData) => {
     const data = await response.json();
 
     console.log('data ==> ', data);
+    return;
   }
 
   if (type === 'google') {
     console.log('type ==> ', type);
+    return;
   }
 
   if (type === 'linkedin') {
     console.log('type ==> ', type);
+    return;
   }
 };
 
