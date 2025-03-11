@@ -4,8 +4,14 @@ import NewArticleForm from '../../forms/NewArticleForm';
 import ArticleView from '../../views/ArticleView';
 
 const NewPostPage = () => {
-  const { activeTab, handleSetActiveTab, formState, handleFormChange } =
-    useNewPostPageData();
+  const {
+    activeTab,
+    handleSetActiveTab,
+    formState,
+    handleFormChange,
+    handleNewBodyItem,
+    handleBodyChange,
+  } = useNewPostPageData();
 
   return (
     <TabsContainer tabs={activeTab} handleSetActiveTab={handleSetActiveTab}>
@@ -13,6 +19,8 @@ const NewPostPage = () => {
         <NewArticleForm
           formState={formState}
           handleFormChange={handleFormChange}
+          handleNewBodyItem={handleNewBodyItem}
+          handleBodyChange={handleBodyChange}
         />
       )}
 

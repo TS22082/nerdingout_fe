@@ -17,7 +17,7 @@ const useLayoutData = () => {
 
   useEffect(() => {
     (async () => {
-      if (authToken && !userId) {
+      if (authToken && !userId && !isLoggedIn) {
         try {
           const baseUrl = import.meta.env.VITE_API_BASE_URL;
           const response = await fetch(`${baseUrl}/auth/verify`, {
@@ -29,7 +29,7 @@ const useLayoutData = () => {
 
           const data = await response.json();
 
-          if (data.success && !isLoggedIn && !userId) {
+          if (data.success) {
             setIsLoggedIn(true);
             setUserId(data.id);
           }

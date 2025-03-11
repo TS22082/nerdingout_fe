@@ -1,15 +1,20 @@
 import useArticles from '../../../hooks/api/useArticles.ts';
 import { useEffect } from 'react';
 import { useUserId } from '../../../hooks/state/useUserId.ts';
+import LoadingContainer from '../../containers/LoadingContainer';
 
 const LandingPage = () => {
-  const { articles } = useArticles();
+  const { articles, articlesLoading } = useArticles();
   const { userId } = useUserId();
 
   useEffect(() => {
     console.log('LandingPage ==>', articles);
     console.log('Users ID ==>', userId);
   }, [articles, userId]);
+
+  if (articlesLoading) {
+    return <LoadingContainer />;
+  }
 
   return (
     <div>

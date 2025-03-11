@@ -23,6 +23,7 @@ const TabsContainer: React.FC<TabsContainerProps> = ({
         {Object.entries(tabs).map(([key, value]) => {
           return (
             <Nav.Link
+              key={key}
               active={value}
               onClick={() => handleSetActiveTab(key)}
               style={{

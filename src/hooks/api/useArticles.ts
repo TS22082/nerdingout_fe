@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 const useArticles = () => {
   const [articles, setArticles] = useState([]);
+  const [articlesLoading, setArticlesLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -11,13 +12,15 @@ const useArticles = () => {
         const data = await response.json();
 
         setArticles(data);
+        setArticlesLoading(false);
       } catch (e) {
         console.error(e);
+        setArticlesLoading(false);
       }
     })();
   }, []);
 
-  return { articles };
+  return { articles, articlesLoading };
 };
 
 export default useArticles;
