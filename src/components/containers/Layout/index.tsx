@@ -1,22 +1,16 @@
 import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import toggleActiveStyling from '../../../helpers/toggleActiveStyling.ts';
+import useLayoutData from './useLayoutData.ts';
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
 const Layout: React.FC<LayoutProps> = (props) => {
-  const layoutStyle = {
-    minHeight: '100vh',
-    height: '100vh',
-  };
-
-  const location = useLocation();
+  const { layoutStyle, currentBaseRoute, isLoggedIn } = useLayoutData();
   const navigate = useNavigate();
-
-  const currentBaseRoute = location.pathname.split('/')[1];
 
   return (
     <div style={layoutStyle}>
@@ -48,6 +42,14 @@ const Layout: React.FC<LayoutProps> = (props) => {
                 support
               </Nav.Link>
             </Nav>
+            {isLoggedIn && (
+              <Nav.Link
+                onClick={() => navigate('/new')}
+                style={toggleActiveStyling('new', currentBaseRoute)}
+              >
+                new
+              </Nav.Link>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
