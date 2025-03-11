@@ -1,19 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import Layout from '../components/containers/Layout';
-import LoadingContainer from '../components/containers/LoadingContainer';
+import Layout from '../containers/Layout';
+import LoadingContainer from '../containers/LoadingContainer';
+import AuthProtected from '../containers/AuthProtected';
 
 const AppRouter = () => {
-  const AuthPage = lazy(() => import('../components/pages/AuthPage'));
-  const VerifyAuthPage = lazy(
-    () => import('../components/pages/VerifyAuthPage')
-  );
-  const LandingPage = lazy(() => import('../components/pages/LandingPage'));
-  const NewPostPage = lazy(() => import('../components/pages/NewPostPage'));
-  const EditPostPage = lazy(() => import('../components/pages/EditPostPage'));
-  const DeletePostPage = lazy(
-    () => import('../components/pages/DeletePostPage')
-  );
+  const AuthPage = lazy(() => import('../pages/AuthPage'));
+  const VerifyAuthPage = lazy(() => import('../pages/VerifyAuthPage'));
+  const LandingPage = lazy(() => import('../pages/LandingPage'));
+  const NewPostPage = lazy(() => import('../pages/NewPostPage'));
+  const EditPostPage = lazy(() => import('../pages/EditPostPage'));
+  const DeletePostPage = lazy(() => import('../pages/DeletePostPage'));
 
   return (
     <BrowserRouter>
@@ -67,7 +64,9 @@ const AppRouter = () => {
             path="/new"
             element={
               <Suspense fallback={<LoadingContainer />}>
-                <NewPostPage />
+                <AuthProtected>
+                  <NewPostPage />
+                </AuthProtected>
               </Suspense>
             }
           />
@@ -75,7 +74,9 @@ const AppRouter = () => {
             path="/edit"
             element={
               <Suspense fallback={<LoadingContainer />}>
-                <EditPostPage />
+                <AuthProtected>
+                  <EditPostPage />
+                </AuthProtected>
               </Suspense>
             }
           />
@@ -83,7 +84,9 @@ const AppRouter = () => {
             path="/delete"
             element={
               <Suspense fallback={<LoadingContainer />}>
-                <DeletePostPage />
+                <AuthProtected>
+                  <DeletePostPage />
+                </AuthProtected>
               </Suspense>
             }
           />
