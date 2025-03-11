@@ -1,9 +1,10 @@
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useUserId } from '../../../hooks/state/useUserId.ts';
 
 const useLayoutData = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const { userId, setUserId } = useUserId();
   const authToken = localStorage.getItem('access_token');
 
   const layoutStyle = {
@@ -26,7 +27,11 @@ const useLayoutData = () => {
         });
 
         const data = await response.json();
-        if (data.success) setIsLoggedIn(true);
+
+        if (data.success && !isLoggedIn && !userId) {
+          setIsLoggedIn(true);
+          setUserId(data.id);
+        }
       } catch (err) {
         console.error('error making request ==>', err);
       }
