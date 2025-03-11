@@ -3,13 +3,15 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import toggleActiveStyling from '../../../helpers/toggleActiveStyling.ts';
 import useLayoutData from './useLayoutData.ts';
+import { FiLogOut } from 'react-icons/fi';
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
 const Layout: React.FC<LayoutProps> = (props) => {
-  const { layoutStyle, currentBaseRoute, isLoggedIn } = useLayoutData();
+  const { layoutStyle, currentBaseRoute, isLoggedIn, handleLogout } =
+    useLayoutData();
   const navigate = useNavigate();
 
   return (
@@ -41,15 +43,23 @@ const Layout: React.FC<LayoutProps> = (props) => {
               >
                 support
               </Nav.Link>
+              {isLoggedIn && (
+                <>
+                  <Nav.Link
+                    onClick={() => navigate('/new')}
+                    style={toggleActiveStyling('new', currentBaseRoute)}
+                  >
+                    new
+                  </Nav.Link>
+                  <Nav.Link
+                    onClick={() => handleLogout()}
+                    style={toggleActiveStyling('logout', currentBaseRoute)}
+                  >
+                    <FiLogOut />
+                  </Nav.Link>
+                </>
+              )}
             </Nav>
-            {isLoggedIn && (
-              <Nav.Link
-                onClick={() => navigate('/new')}
-                style={toggleActiveStyling('new', currentBaseRoute)}
-              >
-                new
-              </Nav.Link>
-            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

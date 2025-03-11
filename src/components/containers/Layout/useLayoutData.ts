@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUserId } from '../../../hooks/state/useUserId.ts';
 
 const useLayoutData = () => {
@@ -15,33 +15,46 @@ const useLayoutData = () => {
   const location = useLocation();
   const currentBaseRoute = location.pathname.split('/')[1];
 
-  (async () => {
-    if (authToken) {
-      try {
-        const baseUrl = import.meta.env.VITE_API_BASE_URL;
-        const response = await fetch(`${baseUrl}/auth/verify`, {
-          method: 'GET',
-          headers: {
-            Authorization: authToken,
-          },
-        });
+  useEffect(() => {
+    (async () => {
+      if (authToken && !userId) {
+        try {
+          const baseUrl = import.meta.env.VITE_API_BASE_URL;
+          const response = await fetch(`${baseUrl}/auth/verify`, {
+            method: 'GET',
+            headers: {
+              Authorization: authToken,
+            },
+          });
 
-        const data = await response.json();
+          const data = await response.json();
 
-        if (data.success && !isLoggedIn && !userId) {
-          setIsLoggedIn(true);
-          setUserId(data.id);
+          if (data.success && !isLoggedIn && !userId) {
+            setIsLoggedIn(true);
+            setUserId(data.id);
+          }
+        } catch (err) {
+          console.error('error making request ==>', err);
         }
-      } catch (err) {
-        console.error('error making request ==>', err);
       }
+    })();
+
+    if (userId && authToken && !isLoggedIn) {
+      setIsLoggedIn(true);
     }
-  })();
+  }, [userId]);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserId('');
+    localStorage.removeItem('access_token');
+  };
 
   return {
     isLoggedIn,
     layoutStyle,
     currentBaseRoute,
+    handleLogout,
   };
 };
 
