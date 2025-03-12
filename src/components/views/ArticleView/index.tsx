@@ -6,18 +6,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // @ts-expect-error
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import React from 'react';
-import { BodyFormType } from '../../../types/types.ts';
+import { FormStateType } from '../../../types/types.ts';
 import remarkGfm from 'remark-gfm';
 
-type ArticleValueTypes = {
-  title: string;
-  coverPhoto: string;
-  description: string;
-  body: BodyFormType[];
-};
-
 type ViewData = {
-  data: ArticleValueTypes;
+  data: FormStateType;
 };
 
 const ArticleView: React.FC<ViewData> = ({ data }) => {

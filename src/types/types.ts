@@ -11,6 +11,7 @@ export type FormStateType = {
   title: string;
   description: string;
   coverPhoto: string;
+  isPublished: boolean;
   body: BodyFormType[];
 };
 
@@ -19,6 +20,7 @@ export type NewArticleFormType = {
     title: string;
     coverPhoto: string;
     description: string;
+    isPublished: boolean;
     body: BodyFormType[];
   };
   handleFormChange: (field: string, value: string) => void;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BodyEntryOptionsType, FormStateType } from '../../../types/types.ts';
 
 const useNewPostPageData = () => {
+  const authToken = localStorage.getItem('access_token');
   const [activeTab, setActiveTab] = useState({
     new: true,
     preview: false,
@@ -12,6 +13,7 @@ const useNewPostPageData = () => {
     coverPhoto: '',
     description: '',
     body: [],
+    isPublished: false,
   });
 
   const handleFormChange = (key: string, value: string) => {
@@ -51,8 +53,32 @@ const useNewPostPageData = () => {
     setActiveTab({ ...clearSettings, [tab]: true });
   };
 
-  const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSave = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!authToken || !formState) {
+      return;
+    }
+
+    console.log(JSON.stringify(formState));
+
+    try {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL;
+      const response = await fetch(`${baseUrl}/articles`, {
+        method: 'POST',
+        body: JSON.stringify(formState),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authToken,
+        },
+      });
+
+      const data = await response.json();
+
+      console.log('data ==>', JSON.stringify(data));
+    } catch (err) {
+      console.error(err);
+    }
     console.log('New Article Form', formState);
   };
 
