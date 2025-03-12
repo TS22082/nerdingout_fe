@@ -13,9 +13,10 @@ const NewArticleForm: React.FC<NewArticleFormType> = ({
   handleFormChange,
   handleNewBodyItem,
   handleBodyChange,
+  handleSave,
 }) => {
   return (
-    <Form>
+    <Form onSubmit={handleSave}>
       <Form.Group className="my-3">
         <Form.Label>Title</Form.Label>
         <Form.Control
@@ -51,8 +52,8 @@ const NewArticleForm: React.FC<NewArticleFormType> = ({
           }
         />
       </Form.Group>
-      {formState._body.length > 0 &&
-        formState._body.map((item: BodyFormType, index: number) => {
+      {formState.body.length > 0 &&
+        formState.body.map((item: BodyFormType, index: number) => {
           if (item.type === 'text') {
             return (
               <Form.Group key={index} className="mb-3">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BodyEntryOptionsType, FormStateType } from '../../../types/types.ts';
 
 const useNewPostPageData = () => {
@@ -11,8 +11,7 @@ const useNewPostPageData = () => {
     title: '',
     coverPhoto: '',
     description: '',
-    body: '',
-    _body: [],
+    body: [],
   });
 
   const handleFormChange = (key: string, value: string) => {
@@ -27,18 +26,18 @@ const useNewPostPageData = () => {
 
     setFormState((prevState) => ({
       ...prevState,
-      _body: [...prevState._body, newFormItem],
+      body: [...prevState.body, newFormItem],
     }));
   };
 
   const handleBodyChange = (index: number, value: string) => {
     setFormState((prevState) => {
-      const bodyCopy = [...prevState._body];
+      const bodyCopy = [...prevState.body];
       bodyCopy[index] = { ...bodyCopy[index], value };
 
       return {
         ...prevState,
-        _body: bodyCopy,
+        body: bodyCopy,
       };
     });
   };
@@ -52,6 +51,11 @@ const useNewPostPageData = () => {
     setActiveTab({ ...clearSettings, [tab]: true });
   };
 
+  const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('New Article Form', formState);
+  };
+
   return {
     activeTab,
     formState,
@@ -59,6 +63,7 @@ const useNewPostPageData = () => {
     handleSetActiveTab,
     handleFormChange,
     handleNewBodyItem,
+    handleSave,
   };
 };
 

@@ -6,11 +6,12 @@ import ArticleView from '../../views/ArticleView';
 const NewPostPage = () => {
   const {
     activeTab,
-    handleSetActiveTab,
     formState,
+    handleSetActiveTab,
     handleFormChange,
     handleNewBodyItem,
     handleBodyChange,
+    handleSave,
   } = useNewPostPageData();
 
   return (
@@ -21,6 +22,7 @@ const NewPostPage = () => {
           handleFormChange={handleFormChange}
           handleNewBodyItem={handleNewBodyItem}
           handleBodyChange={handleBodyChange}
+          handleSave={handleSave}
         />
       )}
 

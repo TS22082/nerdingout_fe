@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type BodyEntryOptionsType = 'text' | 'image';
 
 export type BodyFormType = {
@@ -9,8 +11,7 @@ export type FormStateType = {
   title: string;
   description: string;
   coverPhoto: string;
-  body: '';
-  _body: BodyFormType[];
+  body: BodyFormType[];
 };
 
 export type NewArticleFormType = {
@@ -18,10 +19,10 @@ export type NewArticleFormType = {
     title: string;
     coverPhoto: string;
     description: string;
-    body: string;
-    _body: BodyFormType[];
+    body: BodyFormType[];
   };
   handleFormChange: (field: string, value: string) => void;
   handleNewBodyItem: (type: BodyEntryOptionsType) => void;
   handleBodyChange: (index: number, value: string) => void;
+  handleSave: (e: React.FormEvent<HTMLFormElement>) => void;
 };
