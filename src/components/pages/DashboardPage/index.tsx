@@ -3,7 +3,7 @@ import useDashboardPageData from './useDashboardPageData.ts';
 import LoadingContainer from '../../containers/LoadingContainer';
 
 const DashboardPage = () => {
-  const { articles, articlesLoading, handlePublishArticleToggle } =
+  const { userArticles, articlesLoading, handlePublishArticleToggle } =
     useDashboardPageData();
 
   if (articlesLoading) {
@@ -12,9 +12,9 @@ const DashboardPage = () => {
 
   return (
     <Container>
-      <Row className="mt-3">
-        {articles.length > 0 &&
-          articles.map((article, index) => (
+      <Row>
+        {userArticles.length > 0 &&
+          userArticles.map((article, index) => (
             <Col
               sm={12}
               md={12}
@@ -22,7 +22,11 @@ const DashboardPage = () => {
                 span: 4,
               }}
             >
-              <Card>
+              <Card
+                style={{
+                  marginTop: 10,
+                }}
+              >
                 <Card.Body>
                   <Card.Text>{article.title}</Card.Text>
                   <div

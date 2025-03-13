@@ -1,12 +1,13 @@
-import useArticles from '../../../hooks/api/useArticles.ts';
+import useUserArticles from '../../../hooks/api/useUserArticles.ts';
 
 const useDashboardPageData = () => {
-  const { articles, articlesLoading, handleChangeArticle } = useArticles();
+  const { userArticles, articlesLoading, handleChangeArticle } =
+    useUserArticles();
   const authToken = localStorage.getItem('access_token');
 
   const handlePublishArticleToggle = async (index: number) => {
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
-    const article = { ...articles[index] };
+    const article = { ...userArticles[index] };
 
     article.isPublished = !article.isPublished;
 
@@ -29,7 +30,7 @@ const useDashboardPageData = () => {
     }
   };
 
-  return { articles, articlesLoading, handlePublishArticleToggle };
+  return { userArticles, articlesLoading, handlePublishArticleToggle };
 };
 
 export default useDashboardPageData;

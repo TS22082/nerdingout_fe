@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { ArticleType } from '../../types/types.ts';
 
-const useArticles = () => {
-  const [articles, setArticles] = useState<ArticleType[]>([]);
+const usePublishedArticles = () => {
+  const [publishedArticles, setArticles] = useState<ArticleType[]>([]);
   const [articlesLoading, setArticlesLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
-        const response = await fetch(`${baseUrl}/articles`);
+        const response = await fetch(`${baseUrl}/articles/published`);
         const data = await response.json();
 
         setArticles(data);
@@ -22,12 +22,12 @@ const useArticles = () => {
   }, []);
 
   const handleChangeArticle = (index: number, article: ArticleType) => {
-    const arrCopy = [...articles];
+    const arrCopy = [...publishedArticles];
     arrCopy[index] = article;
     setArticles(arrCopy);
   };
 
-  return { articles, articlesLoading, handleChangeArticle };
+  return { publishedArticles, articlesLoading, handleChangeArticle };
 };
 
-export default useArticles;
+export default usePublishedArticles;

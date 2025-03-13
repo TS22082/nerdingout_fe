@@ -72,6 +72,16 @@ const AppRouter = () => {
             }
           />
           <Route
+            path="/article/:articleId"
+            element={
+              <Suspense fallback={<LoadingContainer />}>
+                <AuthProtected>
+                  <h1>Hello world</h1>
+                </AuthProtected>
+              </Suspense>
+            }
+          />
+          <Route
             path="/dashboard"
             element={
               <Suspense fallback={<LoadingContainer />}>

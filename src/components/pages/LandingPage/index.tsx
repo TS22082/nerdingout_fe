@@ -1,17 +1,19 @@
-import useArticles from '../../../hooks/api/useArticles.ts';
+import usePublishedArticles from '../../../hooks/api/usePublishedArticles.ts';
 import { useEffect } from 'react';
 import { useUserId } from '../../../hooks/state/useUserId.ts';
 import LoadingContainer from '../../containers/LoadingContainer';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
-  const { articles, articlesLoading } = useArticles();
+  const { publishedArticles, articlesLoading } = usePublishedArticles();
+  const navigate = useNavigate();
   const { userId } = useUserId();
 
   useEffect(() => {
-    console.log('LandingPage ==>', articles);
+    console.log('Articles ==>', publishedArticles);
     console.log('Users ID ==>', userId);
-  }, [articles, userId]);
+  }, [publishedArticles, userId]);
 
   if (articlesLoading) {
     return <LoadingContainer />;
@@ -30,10 +32,10 @@ const LandingPage = () => {
           backgroundPosition: 'center center',
         }}
       />
-      <Container className={'mt-3'}>
+      <Container>
         <Row>
-          {articles.length > 0 &&
-            articles.map((article, index) => (
+          {publishedArticles.length > 0 &&
+            publishedArticles.map((article, index) => (
               <Col
                 key={index}
                 xs={12}
@@ -42,7 +44,11 @@ const LandingPage = () => {
                   span: 6,
                 }}
               >
-                <Card>
+                <Card
+                  style={{
+                    marginTop: 10,
+                  }}
+                >
                   <div
                     style={{
                       height: '300px',
@@ -56,7 +62,12 @@ const LandingPage = () => {
                   <Card.Body>
                     <Card.Title>{article.title}</Card.Title>
                     <Card.Text>{article.description}</Card.Text>
-                    <Button variant="primary">View Article</Button>
+                    <Button
+                      onClick={() => navigate(`/article/${article.id}`)}
+                      variant="primary"
+                    >
+                      View Article
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
