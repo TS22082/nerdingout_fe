@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { ArticleType } from '../../types/types.ts';
 
 const useArticles = () => {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<ArticleType[]>([]);
   const [articlesLoading, setArticlesLoading] = useState(true);
 
   useEffect(() => {
@@ -20,7 +21,13 @@ const useArticles = () => {
     })();
   }, []);
 
-  return { articles, articlesLoading };
+  const handleChangeArticle = (index: number, article: ArticleType) => {
+    const arrCopy = [...articles];
+    arrCopy[index] = article;
+    setArticles(arrCopy);
+  };
+
+  return { articles, articlesLoading, handleChangeArticle };
 };
 
 export default useArticles;

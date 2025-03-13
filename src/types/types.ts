@@ -28,3 +28,14 @@ export type NewArticleFormType = {
   handleBodyChange: (index: number, value: string) => void;
   handleSave: (e: React.FormEvent<HTMLFormElement>) => void;
 };
+
+export type ArticleType = {
+  creatorId: string;
+  id: string;
+  title: string;
+  description: string;
+  coverPhoto: string;
+  isPublished: boolean;
+  body: BodyFormType[];
+  updatedAt: string;
+};

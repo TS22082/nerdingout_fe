@@ -1,4 +1,4 @@
-import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import toggleActiveStyling from '../../../helpers/toggleActiveStyling.ts';
@@ -44,37 +44,38 @@ const Layout: React.FC<LayoutProps> = (props) => {
                 support
               </Nav.Link>
               {isLoggedIn && (
-                <>
-                  <Nav.Link
-                    onClick={() => navigate('/new')}
-                    style={toggleActiveStyling('new', currentBaseRoute)}
-                  >
-                    new
-                  </Nav.Link>
-                  <Nav.Link
-                    onClick={() => handleLogout()}
-                    style={toggleActiveStyling('logout', currentBaseRoute)}
-                  >
-                    <FiLogOut />
-                  </Nav.Link>
-                </>
+                <NavDropdown title="user" id="nav-dropdown">
+                  <NavDropdown.Item>
+                    <Nav.Link
+                      onClick={() => navigate('/dashboard')}
+                      style={toggleActiveStyling('dashboard', currentBaseRoute)}
+                    >
+                      dashboard
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Nav.Link
+                      onClick={() => navigate('/new')}
+                      style={toggleActiveStyling('new', currentBaseRoute)}
+                    >
+                      new
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Nav.Link
+                      onClick={() => handleLogout()}
+                      style={toggleActiveStyling('logout', currentBaseRoute)}
+                    >
+                      <FiLogOut />
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container className="pt-3">
-        <Row>
-          <Col
-            lg={{
-              span: 6,
-              offset: 3,
-            }}
-          >
-            {props.children}
-          </Col>
-        </Row>
-      </Container>
+      {props.children}
     </div>
   );
 };

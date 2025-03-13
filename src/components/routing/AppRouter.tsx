@@ -11,6 +11,7 @@ const AppRouter = () => {
   const NewPostPage = lazy(() => import('../pages/NewPostPage'));
   const EditPostPage = lazy(() => import('../pages/EditPostPage'));
   const DeletePostPage = lazy(() => import('../pages/DeletePostPage'));
+  const DashboardPage = lazy(() => import('../pages/DashboardPage'));
 
   return (
     <BrowserRouter>
@@ -66,6 +67,16 @@ const AppRouter = () => {
               <Suspense fallback={<LoadingContainer />}>
                 <AuthProtected>
                   <NewPostPage />
+                </AuthProtected>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Suspense fallback={<LoadingContainer />}>
+                <AuthProtected>
+                  <DashboardPage />
                 </AuthProtected>
               </Suspense>
             }
