@@ -1,12 +1,10 @@
-import { Col, Container, Form, Row, Table } from 'react-bootstrap';
+import { Card, Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
 import useDashboardPageData from './useDashboardPageData.ts';
 import LoadingContainer from '../../containers/LoadingContainer';
 
 const DashboardPage = () => {
   const { articles, articlesLoading, handlePublishArticleToggle } =
     useDashboardPageData();
-
-  console.log('articles ==>', articles);
 
   if (articlesLoading) {
     return <LoadingContainer />;
@@ -15,44 +13,89 @@ const DashboardPage = () => {
   return (
     <Container>
       <Row className="mt-3">
-        <Col
-          sm={12}
-          md={12}
-          lg={{
-            span: 8,
-            offset: 2,
-          }}
-        >
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Published</th>
-              </tr>
-            </thead>
-            <tbody>
-              {articles.map((article, index) => (
-                <tr key={article.id}>
-                  <td>{index + 1}</td>
-                  <td>{article.title}</td>
-                  <td>{article.description}</td>
-                  <td>
+        {articles.length > 0 &&
+          articles.map((article, index) => (
+            <Col
+              sm={12}
+              md={12}
+              lg={{
+                span: 4,
+              }}
+            >
+              <Card>
+                <Card.Body>
+                  <Card.Text>{article.title}</Card.Text>
+                  <div
+                    style={{
+                      width: '100%',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: '80%',
+                        borderStyle: 'solid',
+                        borderWidth: 1,
+                        color: 'lightgray',
+                        marginTop: '15px',
+                        marginBottom: '15px',
+                      }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Dropdown>
+                      <Dropdown.Toggle
+                        size="sm"
+                        variant="secondary"
+                        id="dropdown-basic"
+                      >
+                        Actions
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          onClick={async () => {
+                            try {
+                              await handlePublishArticleToggle(index);
+                            } catch (err) {
+                              console.error('error ==> ', err);
+                            }
+                          }}
+                        >
+                          {article.isPublished ? 'Un-publish' : 'Publish'}
+                        </Dropdown.Item>
+                        <Dropdown.Item>View</Dropdown.Item>
+                        <Dropdown.Item>Delete</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                     <Form>
                       <Form.Check
-                        onChange={() => handlePublishArticleToggle(index)}
-                        checked={article.isPublished}
                         type="switch"
-                        id="custom-switch"
+                        id={`custom-switch-${index}`}
+                        label={article.isPublished ? 'Deployed' : 'Draft'}
+                        reverse
+                        checked={article.isPublished}
+                        onClick={async () => {
+                          try {
+                            await handlePublishArticleToggle(index);
+                          } catch (err) {
+                            console.error('error ==> ', err);
+                          }
+                        }}
                       />
                     </Form>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Col>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
       </Row>
     </Container>
   );
