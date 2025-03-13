@@ -3,6 +3,7 @@ import useNewPostPageData from './useNewPostPageData.ts';
 import NewArticleForm from '../../forms/NewArticleForm';
 import ArticleView from '../../views/ArticleView';
 import { Col, Container, Row } from 'react-bootstrap';
+import ArticleBodyView from '../../views/ArticleBodyView';
 
 const NewPostPage = () => {
   const {
@@ -43,7 +44,9 @@ const NewPostPage = () => {
 
             {activeTab['preview'] && (
               <div className="my-3">
-                <ArticleView data={formState} />
+                <ArticleView data={formState}>
+                  <ArticleBodyView data={formState} />
+                </ArticleView>
               </div>
             )}
           </TabsContainer>

@@ -1,11 +1,16 @@
-import useArticleViewPageData from './useArticleViewPageData.ts';
 import LoadingContainer from '../../containers/LoadingContainer';
 import { Col, Container, Row } from 'react-bootstrap';
 import PublishedArticleView from '../../views/PublishedArticleView';
+import { useParams } from 'react-router-dom';
+import usePublishedArticle from '../../../hooks/api/usePublishedArticle.ts';
+import ArticleBodyView from '../../views/ArticleBodyView';
 
 const ArticleViewPage = () => {
-  const { publishedArticle, publishedArticleLoading } =
-    useArticleViewPageData();
+  const { articleId } = useParams();
+
+  const { publishedArticle, publishedArticleLoading } = usePublishedArticle(
+    articleId || ''
+  );
 
   if (publishedArticleLoading) {
     return <LoadingContainer />;
@@ -26,7 +31,9 @@ const ArticleViewPage = () => {
       <Container>
         <Row>
           <Col xs={12} sm={12} md={{ span: 6, offset: 3 }}>
-            <PublishedArticleView data={publishedArticle} />
+            <PublishedArticleView data={publishedArticle}>
+              <ArticleBodyView data={publishedArticle} />
+            </PublishedArticleView>
           </Col>
         </Row>
       </Container>

@@ -27,7 +27,6 @@ const usePublishedArticle = (articleId: string) => {
         );
         const data = await response.json();
 
-        console.log('data ==>', data);
         setPublishedArticleLoading(false);
         setPublishedArticle(data);
       } catch (err) {
