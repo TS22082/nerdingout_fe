@@ -12,7 +12,7 @@ const LandingPage = () => {
   }
 
   return (
-    <div>
+    <>
       <div
         style={{
           height: '600px',
@@ -34,7 +34,10 @@ const LandingPage = () => {
                     marginTop: 10,
                   }}
                 >
-                  <div
+                  <Card.Img
+                    variant="top"
+                    src={article.coverPhoto}
+                    as="div"
                     style={{
                       height: '300px',
                       backgroundImage: `url(${article.coverPhoto})`,
@@ -59,7 +62,7 @@ const LandingPage = () => {
             ))}
         </Row>
       </Container>
-    </div>
+    </>
   );
 };
 

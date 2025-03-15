@@ -17,7 +17,7 @@ const ArticleViewPage = () => {
   }
 
   return (
-    <div>
+    <>
       <div
         style={{
           height: '600px',
@@ -37,7 +37,7 @@ const ArticleViewPage = () => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 };
 

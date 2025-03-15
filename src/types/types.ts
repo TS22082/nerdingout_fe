@@ -39,3 +39,12 @@ export type ArticleType = {
   body: BodyFormType[];
   updatedAt: string;
 };
+
+export type ArticleViewProps = {
+  data: FormStateType;
+  children: React.ReactNode;
+};
+
+export type ArticleBodyProps = {
+  data: FormStateType;
+};

@@ -1,12 +1,7 @@
 import React from 'react';
-import { FormStateType } from '../../../types/types.ts';
+import { ArticleViewProps } from '../../../types/types.ts';
 
-type ViewData = {
-  data: FormStateType;
-  children: React.ReactNode;
-};
-
-const ArticleView: React.FC<ViewData> = ({ data, children }) => {
+const ArticleView: React.FC<ArticleViewProps> = ({ data, children }) => {
   const imageStyles = {
     backgroundImage: `url(${data.coverPhoto})`,
     backgroundRepeat: 'no-repeat',

@@ -5,17 +5,13 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { FormStateType } from '../../../types/types.ts';
+import { ArticleBodyProps } from '../../../types/types.ts';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-type ViewData = {
-  data: FormStateType;
-};
-
-const ArticleBodyView: React.FC<ViewData> = ({ data }) => {
+const ArticleBodyView: React.FC<ArticleBodyProps> = ({ data }) => {
   if (!data.body) {
-    return <div>Loading...</div>;
+    return '';
   }
 
   return data.body.map((item, i) => {
