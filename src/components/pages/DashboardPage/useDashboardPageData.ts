@@ -1,8 +1,18 @@
 import useUserArticles from '../../../hooks/api/useUserArticles.ts';
+import { useState } from 'react';
 
 const useDashboardPageData = () => {
-  const { userArticles, articlesLoading, handleChangeArticle } =
-    useUserArticles();
+  const {
+    userArticles,
+    articlesLoading,
+    handleChangeArticle,
+    handleDeleteArticle,
+  } = useUserArticles();
+
+  const [modalState, setModalState] = useState({
+    open: false,
+    data: undefined,
+  });
   const authToken = localStorage.getItem('access_token');
 
   const handlePublishArticleToggle = async (index: number) => {
@@ -30,7 +40,52 @@ const useDashboardPageData = () => {
     }
   };
 
-  return { userArticles, articlesLoading, handlePublishArticleToggle };
+  const closeModal = () => {
+    setModalState({
+      data: undefined,
+      open: false,
+    });
+  };
+
+  const handleOpenModal = (article) => {
+    setModalState({
+      data: article,
+      open: true,
+    });
+  };
+
+  const handleDeleteSubmit = async () => {
+    if (!modalState?.data?.id || !authToken) return;
+
+    try {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL;
+      const response = await fetch(
+        `${baseUrl}/articles/${modalState.data.id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: authToken,
+          },
+        }
+      );
+      await response.json();
+      handleDeleteArticle(modalState.data.id);
+    } catch (err) {
+      console.error(err);
+    }
+    closeModal();
+  };
+
+  return {
+    userArticles,
+    articlesLoading,
+    handlePublishArticleToggle,
+    modalState,
+    closeModal,
+    handleOpenModal,
+    handleDeleteSubmit,
+  };
 };
 
 export default useDashboardPageData;

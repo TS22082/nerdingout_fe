@@ -101,7 +101,7 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/delete"
+            path="/delete/:articleId"
             element={
               <Suspense fallback={<LoadingContainer />}>
                 <AuthProtected>

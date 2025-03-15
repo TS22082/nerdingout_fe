@@ -48,3 +48,10 @@ export type ArticleViewProps = {
 export type ArticleBodyProps = {
   data: FormStateType;
 };
+
+export type DeleteArticlePropsTypes = {
+  show: boolean;
+  handleClose: () => void;
+  handleSubmit: () => void;
+  data: ArticleType | undefined;
+};

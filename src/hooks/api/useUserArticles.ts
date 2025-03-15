@@ -36,7 +36,17 @@ const useUserArticles = () => {
     setUserArticles(arrCopy);
   };
 
-  return { userArticles, articlesLoading, handleChangeArticle };
+  const handleDeleteArticle = (id: string) => {
+    const newArr = userArticles.filter((item) => item.id !== id);
+    setUserArticles(newArr);
+  };
+
+  return {
+    userArticles,
+    articlesLoading,
+    handleChangeArticle,
+    handleDeleteArticle,
+  };
 };
 
 export default useUserArticles;
