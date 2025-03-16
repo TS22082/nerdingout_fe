@@ -2,6 +2,7 @@ import { Card, Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
 import useDashboardPageData from './useDashboardPageData.ts';
 import LoadingContainer from '../../containers/LoadingContainer';
 import DeleteArticleModal from '../../modals/DeleteArticleModal';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
   const {
@@ -13,6 +14,8 @@ const DashboardPage = () => {
     handleOpenModal,
     handleDeleteSubmit,
   } = useDashboardPageData();
+
+  const navigate = useNavigate();
 
   if (articlesLoading) {
     return <LoadingContainer />;
@@ -80,17 +83,15 @@ const DashboardPage = () => {
 
                         <Dropdown.Menu>
                           <Dropdown.Item
-                            onClick={async () => {
-                              try {
-                                await handlePublishArticleToggle(index);
-                              } catch (err) {
-                                console.error('error ==> ', err);
-                              }
-                            }}
+                            onClick={() => navigate(`/article/${article.id}`)}
                           >
-                            {article.isPublished ? 'Un-publish' : 'Publish'}
+                            View
                           </Dropdown.Item>
-                          <Dropdown.Item>View</Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={() => navigate(`/edit/${article.id}`)}
+                          >
+                            Edit
+                          </Dropdown.Item>
                           <Dropdown.Item
                             onClick={() => handleOpenModal(article)}
                           >

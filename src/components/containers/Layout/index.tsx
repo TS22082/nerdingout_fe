@@ -47,6 +47,14 @@ const Layout: React.FC<LayoutProps> = (props) => {
                 <NavDropdown title="user" id="nav-dropdown">
                   <NavDropdown.Item>
                     <Nav.Link
+                      onClick={() => navigate('/profile')}
+                      style={toggleActiveStyling('profile', currentBaseRoute)}
+                    >
+                      profile
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Nav.Link
                       onClick={() => navigate('/dashboard')}
                       style={toggleActiveStyling('dashboard', currentBaseRoute)}
                     >

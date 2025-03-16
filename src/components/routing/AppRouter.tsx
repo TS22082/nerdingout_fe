@@ -3,15 +3,14 @@ import { lazy, Suspense } from 'react';
 import Layout from '../containers/Layout';
 import LoadingContainer from '../containers/LoadingContainer';
 import AuthProtected from '../containers/AuthProtected';
-import ArticleViewPage from '../pages/ArticleViewPage';
 
 const AppRouter = () => {
   const AuthPage = lazy(() => import('../pages/AuthPage'));
   const VerifyAuthPage = lazy(() => import('../pages/VerifyAuthPage'));
+  const ArticleViewPage = lazy(() => import('../pages/ArticleViewPage'));
   const LandingPage = lazy(() => import('../pages/LandingPage'));
   const NewPostPage = lazy(() => import('../pages/NewPostPage'));
   const EditPostPage = lazy(() => import('../pages/EditPostPage'));
-  const DeletePostPage = lazy(() => import('../pages/DeletePostPage'));
   const DashboardPage = lazy(() => import('../pages/DashboardPage'));
 
   return (
@@ -73,6 +72,16 @@ const AppRouter = () => {
             }
           />
           <Route
+            path="/edit/:articleId"
+            element={
+              <Suspense fallback={<LoadingContainer />}>
+                <AuthProtected>
+                  <NewPostPage />
+                </AuthProtected>
+              </Suspense>
+            }
+          />
+          <Route
             path="/article/:articleId"
             element={
               <Suspense fallback={<LoadingContainer />}>
@@ -101,11 +110,11 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/delete/:articleId"
+            path="/profile"
             element={
               <Suspense fallback={<LoadingContainer />}>
                 <AuthProtected>
-                  <DeletePostPage />
+                  <h1>Profile Page</h1>
                 </AuthProtected>
               </Suspense>
             }
