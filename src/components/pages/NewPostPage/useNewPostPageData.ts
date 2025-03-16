@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { BodyEntryOptionsType, FormStateType } from '../../../types/types.ts';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -56,7 +56,7 @@ const useNewPostPageData = () => {
     setActiveTab({ ...clearSettings, [tab]: true });
   };
 
-  const handleSave = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSave = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!authToken || !formState) {
