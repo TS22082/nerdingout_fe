@@ -1,21 +1,23 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import toggleActiveStyling from '../../../helpers/toggleActiveStyling.ts';
 import useLayoutData from './useLayoutData.ts';
 import { FiLogOut } from 'react-icons/fi';
+import { ToastContainer } from 'react-toastify';
+import { FC, ReactNode } from 'react';
 
 type LayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-const Layout: React.FC<LayoutProps> = (props) => {
+const Layout: FC<LayoutProps> = (props) => {
   const { layoutStyle, currentBaseRoute, isLoggedIn, handleLogout } =
     useLayoutData();
   const navigate = useNavigate();
 
   return (
     <div style={layoutStyle}>
+      <ToastContainer autoClose="1000" />
       <Navbar sticky="top" expand="lg" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand>nerding_out</Navbar.Brand>

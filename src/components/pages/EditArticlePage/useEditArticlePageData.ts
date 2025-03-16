@@ -1,23 +1,36 @@
-import { useState } from 'react';
-import { BodyEntryOptionsType, FormStateType } from '../../../types/types.ts';
+import { FormEvent, useEffect, useState } from 'react';
+import { ArticleType, BodyEntryOptionsType } from '../../../types/types.ts';
+import { useNavigate, useParams } from 'react-router-dom';
+import useUsersArticle from '../../../hooks/api/useUsersArticle.ts';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 
-const useNewPostPageData = () => {
+const useEditPostPageData = () => {
+  const navigate = useNavigate();
   const authToken = localStorage.getItem('access_token');
   const [activeTab, setActiveTab] = useState({
-    new: true,
+    edit: true,
     preview: false,
   });
-  const navigate = useNavigate();
 
-  const [formState, setFormState] = useState<FormStateType>({
+  const { articleId } = useParams();
+  const [formState, setFormState] = useState<ArticleType>({
+    creatorId: '',
+    id: '',
     title: '',
-    coverPhoto: '',
     description: '',
-    body: [],
+    coverPhoto: '',
     isPublished: false,
+    body: [],
+    updatedAt: '',
   });
+
+  const { usersArticle, usersArticleLoading } = useUsersArticle(
+    articleId || ''
+  );
+
+  useEffect(() => {
+    if (usersArticle !== undefined) setFormState(usersArticle);
+  }, [usersArticle]);
 
   const handleFormChange = (key: string, value: string) => {
     setFormState((prevState) => ({ ...prevState, [key]: value }));
@@ -49,14 +62,14 @@ const useNewPostPageData = () => {
 
   const handleSetActiveTab = (tab: string) => {
     const clearSettings = {
-      new: false,
+      edit: false,
       preview: false,
     };
 
     setActiveTab({ ...clearSettings, [tab]: true });
   };
 
-  const handleSave = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSave = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!authToken || !formState) {
@@ -67,8 +80,8 @@ const useNewPostPageData = () => {
 
     try {
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
-      await fetch(`${baseUrl}/articles`, {
-        method: 'POST',
+      await fetch(`${baseUrl}/articles/${usersArticle.id}`, {
+        method: 'PATCH',
         body: JSON.stringify(formState),
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +89,7 @@ const useNewPostPageData = () => {
         },
       });
 
-      toast.success('Article created successfully');
+      toast.success('Article updated successfully');
       navigate('/dashboard');
     } catch (err) {
       console.error(err);
@@ -87,6 +100,7 @@ const useNewPostPageData = () => {
   return {
     activeTab,
     formState,
+    usersArticleLoading,
     handleBodyChange,
     handleSetActiveTab,
     handleFormChange,
@@ -95,4 +109,4 @@ const useNewPostPageData = () => {
   };
 };
 
-export default useNewPostPageData;
+export default useEditPostPageData;

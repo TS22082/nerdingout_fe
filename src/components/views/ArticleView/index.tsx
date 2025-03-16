@@ -1,7 +1,7 @@
-import React from 'react';
 import { ArticleViewProps } from '../../../types/types.ts';
+import { FC } from 'react';
 
-const ArticleView: React.FC<ArticleViewProps> = ({ data, children }) => {
+const ArticleView: FC<ArticleViewProps> = ({ data, children }) => {
   const imageStyles = {
     backgroundImage: `url(${data.coverPhoto})`,
     backgroundRepeat: 'no-repeat',

@@ -1,6 +1,6 @@
 import { Nav } from 'react-bootstrap';
-import React from 'react';
 import capFirstLetter from '../../../helpers/capFirstLetter.ts';
+import { FC, ReactNode } from 'react';
 
 type TabsType = {
   [key: string]: boolean;
@@ -9,10 +9,10 @@ type TabsType = {
 type TabsContainerProps = {
   tabs: TabsType;
   handleSetActiveTab: (tab: string) => void;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-const TabsContainer: React.FC<TabsContainerProps> = ({
+const TabsContainer: FC<TabsContainerProps> = ({
   tabs,
   handleSetActiveTab,
   children,

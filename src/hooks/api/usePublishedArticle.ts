@@ -34,7 +34,7 @@ const usePublishedArticle = (articleId: string) => {
         setPublishedArticleLoading(false);
       }
     })();
-  }, []);
+  }, [articleId, baseUrl]);
 
   return {
     publishedArticle,

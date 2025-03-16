@@ -5,10 +5,11 @@ import {
   DropdownButton,
   Form,
 } from 'react-bootstrap';
-import React from 'react';
-import { BodyFormType, NewArticleFormType } from '../../../types/types.ts';
 
-const NewArticleForm: React.FC<NewArticleFormType> = ({
+import { BodyFormType, NewArticleFormType } from '../../../types/types.ts';
+import { FC } from 'react';
+
+const ArticleForm: FC<NewArticleFormType> = ({
   formState,
   handleFormChange,
   handleNewBodyItem,
@@ -115,4 +116,4 @@ const NewArticleForm: React.FC<NewArticleFormType> = ({
   );
 };
 
-export default NewArticleForm;
+export default ArticleForm;

@@ -1,11 +1,11 @@
+import { Col, Container, Row } from 'react-bootstrap';
 import TabsContainer from '../../containers/TabsContainer';
-import useNewPostPageData from './useNewPostPageData.ts';
 import ArticleForm from '../../forms/ArticleForm';
 import ArticleView from '../../views/ArticleView';
-import { Col, Container, Row } from 'react-bootstrap';
 import ArticleBodyView from '../../views/ArticleBodyView';
+import useEditPostPageData from './useEditArticlePageData.ts';
 
-const NewPostPage = () => {
+const EditArticlePage = () => {
   const {
     activeTab,
     formState,
@@ -14,8 +14,7 @@ const NewPostPage = () => {
     handleNewBodyItem,
     handleBodyChange,
     handleSave,
-  } = useNewPostPageData();
-
+  } = useEditPostPageData();
   return (
     <Container className="mt-5">
       <Row>
@@ -32,7 +31,7 @@ const NewPostPage = () => {
             tabs={activeTab}
             handleSetActiveTab={handleSetActiveTab}
           >
-            {activeTab['new'] && (
+            {activeTab['edit'] && (
               <ArticleForm
                 formState={formState}
                 handleFormChange={handleFormChange}
@@ -56,4 +55,4 @@ const NewPostPage = () => {
   );
 };
 
-export default NewPostPage;
+export default EditArticlePage;

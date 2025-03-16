@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -9,10 +9,8 @@ import { ArticleBodyProps } from '../../../types/types.ts';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const ArticleBodyView: React.FC<ArticleBodyProps> = ({ data }) => {
-  if (!data.body) {
-    return '';
-  }
+const ArticleBodyView: FC<ArticleBodyProps> = ({ data }) => {
+  if (!data.body) return null;
 
   return data.body.map((item, i) => {
     if (item.type === 'text') {

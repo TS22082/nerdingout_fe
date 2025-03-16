@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import Layout from '../containers/Layout';
 import LoadingContainer from '../containers/LoadingContainer';
 import AuthProtected from '../containers/AuthProtected';
+import EditArticlePage from '../pages/EditArticlePage';
 
 const AppRouter = () => {
   const AuthPage = lazy(() => import('../pages/AuthPage'));
@@ -76,7 +77,7 @@ const AppRouter = () => {
             element={
               <Suspense fallback={<LoadingContainer />}>
                 <AuthProtected>
-                  <NewPostPage />
+                  <EditArticlePage />
                 </AuthProtected>
               </Suspense>
             }
