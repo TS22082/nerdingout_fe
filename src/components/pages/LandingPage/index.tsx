@@ -7,9 +7,7 @@ const LandingPage = () => {
   const { publishedArticles, articlesLoading } = usePublishedArticles();
   const navigate = useNavigate();
 
-  if (articlesLoading) {
-    return <LoadingContainer />;
-  }
+  if (articlesLoading) return <LoadingContainer />;
 
   return (
     <>
@@ -29,11 +27,7 @@ const LandingPage = () => {
           {publishedArticles.length > 0 &&
             publishedArticles.map((article, index) => (
               <Col key={index} xs={12} sm={12} md={6}>
-                <Card
-                  style={{
-                    marginTop: 10,
-                  }}
-                >
+                <Card className="mt-3">
                   <Card.Img
                     variant="top"
                     src={article.coverPhoto}

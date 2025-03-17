@@ -3,7 +3,6 @@ import { lazy, Suspense } from 'react';
 import Layout from '../containers/Layout';
 import LoadingContainer from '../containers/LoadingContainer';
 import AuthProtected from '../containers/AuthProtected';
-import EditArticlePage from '../pages/EditArticlePage';
 
 const AppRouter = () => {
   const AuthPage = lazy(() => import('../pages/AuthPage'));
@@ -11,8 +10,8 @@ const AppRouter = () => {
   const ArticleViewPage = lazy(() => import('../pages/ArticleViewPage'));
   const LandingPage = lazy(() => import('../pages/LandingPage'));
   const NewPostPage = lazy(() => import('../pages/NewPostPage'));
-  const EditPostPage = lazy(() => import('../pages/EditPostPage'));
   const DashboardPage = lazy(() => import('../pages/DashboardPage'));
+  const EditArticlePage = lazy(() => import('../pages/EditArticlePage'));
 
   return (
     <BrowserRouter>
@@ -96,16 +95,6 @@ const AppRouter = () => {
               <Suspense fallback={<LoadingContainer />}>
                 <AuthProtected>
                   <DashboardPage />
-                </AuthProtected>
-              </Suspense>
-            }
-          />
-          <Route
-            path="/edit"
-            element={
-              <Suspense fallback={<LoadingContainer />}>
-                <AuthProtected>
-                  <EditPostPage />
                 </AuthProtected>
               </Suspense>
             }
