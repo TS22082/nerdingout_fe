@@ -19,7 +19,7 @@ const ArticleForm: FC<NewArticleFormType> = ({
   return (
     <Form onSubmit={handleSave}>
       <Form.Group className="my-3">
-        <Form.Label>Title</Form.Label>
+        <Form.Label column={true}>Title</Form.Label>
         <Form.Control
           required
           type="text"
@@ -29,7 +29,7 @@ const ArticleForm: FC<NewArticleFormType> = ({
         />
       </Form.Group>
       <Form.Group className="my-3">
-        <Form.Label>Cover Photo</Form.Label>
+        <Form.Label column={true}>Cover Photo</Form.Label>
         <Form.Control
           required
           type="text"
@@ -41,7 +41,7 @@ const ArticleForm: FC<NewArticleFormType> = ({
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Description</Form.Label>
+        <Form.Label column={true}>Description</Form.Label>
         <Form.Control
           required
           as="textarea"
@@ -58,7 +58,7 @@ const ArticleForm: FC<NewArticleFormType> = ({
           if (item.type === 'text') {
             return (
               <Form.Group key={index} className="mb-3">
-                <Form.Label>Text Section</Form.Label>
+                <Form.Label column={true}>Text Section</Form.Label>
                 <Form.Control
                   required
                   as="textarea"
@@ -75,7 +75,7 @@ const ArticleForm: FC<NewArticleFormType> = ({
           if (item.type === 'image') {
             return (
               <Form.Group key={index} className="mb-3">
-                <Form.Label>Image Section</Form.Label>
+                <Form.Label column={true}>Image Section</Form.Label>
                 <Form.Control
                   required
                   type="text"
@@ -96,7 +96,7 @@ const ArticleForm: FC<NewArticleFormType> = ({
         }}
       >
         <DropdownButton
-          as={ButtonGroup}
+          as={ButtonGroup as 'div'}
           title="New Section"
           id="bg-nested-dropdown"
         >
