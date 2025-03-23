@@ -13,16 +13,13 @@ export type FormStateType = {
   coverPhoto: string;
   isPublished: boolean;
   body: BodyFormType[];
+  categoryId: string;
 };
 
 export type NewArticleFormType = {
-  formState: {
-    title: string;
-    coverPhoto: string;
-    description: string;
-    isPublished: boolean;
-    body: BodyFormType[];
-  };
+  formState: FormStateType;
+  categories: CategoryType[];
+  setActiveCategory: (category: CategoryType) => void;
   handleFormChange: (field: string, value: string) => void;
   handleNewBodyItem: (type: BodyEntryOptionsType) => void;
   handleBodyChange: (index: number, value: string) => void;
@@ -38,6 +35,7 @@ export type ArticleType = {
   isPublished: boolean;
   body: BodyFormType[];
   updatedAt: string;
+  categoryId: string;
 };
 
 export type ArticleViewProps = {
@@ -54,4 +52,9 @@ export type DeleteArticlePropsTypes = {
   handleClose: () => void;
   handleSubmit: () => void;
   data: ArticleType | undefined;
+};
+
+export type CategoryType = {
+  id: string;
+  label: string;
 };

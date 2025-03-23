@@ -33,20 +33,16 @@ const DashboardPage = () => {
         <Row>
           {userArticles.length > 0 &&
             userArticles.map((article, index) => (
-              <Col
-                sm={12}
-                md={12}
-                lg={{
-                  span: 4,
-                }}
-              >
+              <Col sm={12} md={6} xl={4}>
                 <Card
                   style={{
                     marginTop: 10,
                   }}
                 >
                   <Card.Body>
-                    <Card.Text>{article.title}</Card.Text>
+                    <Card.Text className="text-truncate">
+                      {article.title}
+                    </Card.Text>
                     <div
                       style={{
                         width: '100%',

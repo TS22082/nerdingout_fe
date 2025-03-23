@@ -1,23 +1,35 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { BodyEntryOptionsType, FormStateType } from '../../../types/types.ts';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import useCategories from '../../../hooks/api/useCategories.ts';
 
 const useNewPostPageData = () => {
+  const { categories } = useCategories();
   const authToken = localStorage.getItem('access_token');
   const [activeTab, setActiveTab] = useState({
     new: true,
     preview: false,
   });
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const [formState, setFormState] = useState<FormStateType>({
     title: '',
     coverPhoto: '',
     description: '',
     body: [],
     isPublished: false,
+    categoryId: categories[0]?.id || '',
   });
+
+  useEffect(() => {
+    if (categories[0]?.id && formState.categoryId === '') {
+      setFormState((prev) => ({
+        ...prev,
+        categoryId: categories[0]?.id,
+      }));
+    }
+  }, [categories, formState.categoryId]);
 
   const handleFormChange = (key: string, value: string) => {
     setFormState((prevState) => ({ ...prevState, [key]: value }));
@@ -87,6 +99,7 @@ const useNewPostPageData = () => {
   return {
     activeTab,
     formState,
+    categories,
     handleBodyChange,
     handleSetActiveTab,
     handleFormChange,

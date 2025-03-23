@@ -9,6 +9,7 @@ const NewPostPage = () => {
   const {
     activeTab,
     formState,
+    categories,
     handleSetActiveTab,
     handleFormChange,
     handleNewBodyItem,
@@ -35,6 +36,7 @@ const NewPostPage = () => {
             {activeTab['new'] && (
               <ArticleForm
                 formState={formState}
+                categories={categories}
                 handleFormChange={handleFormChange}
                 handleNewBodyItem={handleNewBodyItem}
                 handleBodyChange={handleBodyChange}

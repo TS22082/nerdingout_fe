@@ -11,14 +11,37 @@ import { FC } from 'react';
 
 const ArticleForm: FC<NewArticleFormType> = ({
   formState,
+  categories,
   handleFormChange,
   handleNewBodyItem,
   handleBodyChange,
   handleSave,
 }) => {
+  const CategoryMapById = new Map();
+  const CategoryMapByName = new Map();
+
+  categories.forEach((category) => CategoryMapById.set(category.id, category));
+  categories.forEach((category) =>
+    CategoryMapByName.set(category.label, category)
+  );
+
   return (
     <Form onSubmit={handleSave}>
       <Form.Group className="my-3">
+        <Form.Label column={true}>Category</Form.Label>
+        <Form.Select
+          onChange={(e) =>
+            handleFormChange(
+              'categoryId',
+              CategoryMapByName.get(e.target.value)?.id
+            )
+          }
+          value={CategoryMapById.get(formState.categoryId)?.label}
+        >
+          {categories.map((category) => (
+            <option>{category.label}</option>
+          ))}
+        </Form.Select>
         <Form.Label column={true}>Title</Form.Label>
         <Form.Control
           required
