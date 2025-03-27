@@ -1,12 +1,9 @@
 import usePublishedArticles from '../../../hooks/api/usePublishedArticles.ts';
 import useCategories from '../../../hooks/api/useCategories.ts';
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const useLandingPageData = () => {
   const { publishedArticles, articlesLoading } = usePublishedArticles();
   const { categories, categoriesLoading } = useCategories();
-  const location = useLocation();
 
   const wrapperStyles = {
     height: '600px',
