@@ -1,4 +1,3 @@
-import usePublishedArticles from '../../../hooks/api/usePublishedArticles.ts';
 import LoadingContainer from '../../containers/LoadingContainer';
 import ArticleCard from '../../views/ArticleCard';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -16,7 +15,7 @@ const LandingPage = () => {
         <Row>
           {publishedArticles.length > 0 &&
             publishedArticles.map((article, index) => (
-              <Col key={index} xs={12} sm={12} md={6}>
+              <Col key={index} xs={12} lg={6}>
                 <ArticleCard
                   article={article}
                   categoryMapById={categoryMapById}

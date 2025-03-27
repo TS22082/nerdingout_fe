@@ -19,7 +19,6 @@ export type FormStateType = {
 export type NewArticleFormType = {
   formState: FormStateType;
   categories: CategoryType[];
-  setActiveCategory: (category: CategoryType) => void;
   handleFormChange: (field: string, value: string) => void;
   handleNewBodyItem: (type: BodyEntryOptionsType) => void;
   handleBodyChange: (index: number, value: string) => void;

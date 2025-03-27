@@ -3,6 +3,7 @@ import { ArticleType, BodyEntryOptionsType } from '../../../types/types.ts';
 import { useNavigate, useParams } from 'react-router-dom';
 import useUsersArticle from '../../../hooks/api/useUsersArticle.ts';
 import { toast } from 'react-toastify';
+import useCategories from '../../../hooks/api/useCategories.ts';
 
 const useEditPostPageData = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const useEditPostPageData = () => {
     edit: true,
     preview: false,
   });
+  const { categories } = useCategories();
 
   const { articleId } = useParams();
   const [formState, setFormState] = useState<ArticleType>({
@@ -22,6 +24,7 @@ const useEditPostPageData = () => {
     isPublished: false,
     body: [],
     updatedAt: '',
+    categoryId: '',
   });
 
   const { usersArticle, usersArticleLoading } = useUsersArticle(
@@ -29,8 +32,8 @@ const useEditPostPageData = () => {
   );
 
   useEffect(() => {
-    if (usersArticle !== undefined) setFormState(usersArticle);
-  }, [usersArticle]);
+    if (usersArticle && formState.creatorId === '') setFormState(usersArticle);
+  }, [formState.creatorId, usersArticle]);
 
   const handleFormChange = (key: string, value: string) => {
     setFormState((prevState) => ({ ...prevState, [key]: value }));
@@ -101,6 +104,7 @@ const useEditPostPageData = () => {
     activeTab,
     formState,
     usersArticleLoading,
+    categories,
     handleBodyChange,
     handleSetActiveTab,
     handleFormChange,

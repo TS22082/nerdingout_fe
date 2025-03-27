@@ -1,9 +1,11 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useUserId } from '../../../hooks/state/useUserId.ts';
+import useCategories from '../../../hooks/api/useCategories.ts';
 
 const useLayoutData = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { categories, categoriesLoading } = useCategories();
   const { userId, setUserId } = useUserId();
   const authToken = localStorage.getItem('access_token');
 
@@ -42,7 +44,7 @@ const useLayoutData = () => {
     if (userId && authToken && !isLoggedIn) {
       setIsLoggedIn(true);
     }
-  }, [userId]);
+  }, [authToken, isLoggedIn, setUserId, userId]);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -54,6 +56,8 @@ const useLayoutData = () => {
     isLoggedIn,
     layoutStyle,
     currentBaseRoute,
+    categories,
+    categoriesLoading,
     handleLogout,
   };
 };

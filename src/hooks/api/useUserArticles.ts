@@ -28,7 +28,7 @@ const useUserArticles = () => {
         setArticlesLoading(false);
       }
     })();
-  }, []);
+  }, [authToken]);
 
   const handleChangeArticle = (index: number, article: ArticleType) => {
     const arrCopy = [...userArticles];

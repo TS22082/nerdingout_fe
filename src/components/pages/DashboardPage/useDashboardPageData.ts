@@ -1,5 +1,6 @@
 import useUserArticles from '../../../hooks/api/useUserArticles.ts';
 import { useState } from 'react';
+import useCategories from '../../../hooks/api/useCategories.ts';
 
 const useDashboardPageData = () => {
   const {
@@ -8,6 +9,14 @@ const useDashboardPageData = () => {
     handleChangeArticle,
     handleDeleteArticle,
   } = useUserArticles();
+
+  const { categories, categoriesLoading } = useCategories();
+
+  const categoryMapById = new Map();
+
+  categories.forEach((category) => {
+    categoryMapById.set(category.id, category);
+  });
 
   const [modalState, setModalState] = useState({
     open: false,
@@ -80,8 +89,9 @@ const useDashboardPageData = () => {
   return {
     userArticles,
     articlesLoading,
-    handlePublishArticleToggle,
+    categoryMapById,
     modalState,
+    handlePublishArticleToggle,
     closeModal,
     handleOpenModal,
     handleDeleteSubmit,

@@ -29,7 +29,7 @@ const useAuthProtectedData = () => {
         console.error('error making request ==>', err);
       }
     })();
-  }, [userId]);
+  }, [authToken, navigate, userId]);
 };
 
 export default useAuthProtectedData;

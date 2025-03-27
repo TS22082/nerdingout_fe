@@ -26,6 +26,14 @@ const AppRouter = () => {
             }
           />
           <Route
+            path="/:id"
+            element={
+              <Suspense fallback={<LoadingContainer />}>
+                <LandingPage />
+              </Suspense>
+            }
+          />
+          <Route
             path="about"
             element={
               <Suspense fallback={<LoadingContainer />}>

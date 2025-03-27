@@ -1,15 +1,23 @@
 import { useEffect, useState } from 'react';
 import { ArticleType } from '../../types/types.ts';
+import { useLocation } from 'react-router-dom';
 
 const usePublishedArticles = () => {
   const [publishedArticles, setArticles] = useState<ArticleType[]>([]);
   const [articlesLoading, setArticlesLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
+    const categoryId = location.pathname;
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    let requestStr = `${baseUrl}/articles/published`;
+
+    if (categoryId.length > 1)
+      requestStr += `?categoryId=${categoryId.slice(1)}`;
+
     (async () => {
       try {
-        const baseUrl = import.meta.env.VITE_API_BASE_URL;
-        const response = await fetch(`${baseUrl}/articles/published`);
+        const response = await fetch(requestStr);
         const data = await response.json();
 
         setArticles(data);
@@ -19,7 +27,7 @@ const usePublishedArticles = () => {
         setArticlesLoading(false);
       }
     })();
-  }, []);
+  }, [location.pathname]);
 
   const handleChangeArticle = (index: number, article: ArticleType) => {
     const arrCopy = [...publishedArticles];

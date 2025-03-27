@@ -9,6 +9,7 @@ const EditArticlePage = () => {
   const {
     activeTab,
     formState,
+    categories,
     handleSetActiveTab,
     handleFormChange,
     handleNewBodyItem,
@@ -38,6 +39,7 @@ const EditArticlePage = () => {
                 handleNewBodyItem={handleNewBodyItem}
                 handleBodyChange={handleBodyChange}
                 handleSave={handleSave}
+                categories={categories}
               />
             )}
 

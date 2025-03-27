@@ -1,4 +1,12 @@
-import { Card, Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
+import {
+  Badge,
+  Card,
+  Col,
+  Container,
+  Dropdown,
+  Form,
+  Row,
+} from 'react-bootstrap';
 import useDashboardPageData from './useDashboardPageData.ts';
 import LoadingContainer from '../../containers/LoadingContainer';
 import DeleteArticleModal from '../../modals/DeleteArticleModal';
@@ -10,6 +18,7 @@ const DashboardPage = () => {
     articlesLoading,
     handlePublishArticleToggle,
     modalState,
+    categoryMapById,
     closeModal,
     handleOpenModal,
     handleDeleteSubmit,
@@ -43,6 +52,9 @@ const DashboardPage = () => {
                     <Card.Text className="text-truncate">
                       {article.title}
                     </Card.Text>
+                    <Badge bg="secondary">
+                      {categoryMapById.get(article.categoryId).label}
+                    </Badge>
                     <div
                       style={{
                         width: '100%',

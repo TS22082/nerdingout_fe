@@ -11,8 +11,13 @@ type LayoutProps = {
 };
 
 const Layout: FC<LayoutProps> = (props) => {
-  const { layoutStyle, currentBaseRoute, isLoggedIn, handleLogout } =
-    useLayoutData();
+  const {
+    layoutStyle,
+    currentBaseRoute,
+    isLoggedIn,
+    categories,
+    handleLogout,
+  } = useLayoutData();
   const navigate = useNavigate();
 
   return (
@@ -27,12 +32,29 @@ const Layout: FC<LayoutProps> = (props) => {
             className="justify-content-end"
           >
             <Nav>
-              <Nav.Link
-                onClick={() => navigate('/')}
-                style={toggleActiveStyling('', currentBaseRoute)}
-              >
-                articles
-              </Nav.Link>
+              <NavDropdown title="articles" id="nav-dropdown">
+                <NavDropdown.Item>
+                  <Nav.Link
+                    className="text-lowercase"
+                    onClick={() => navigate('/')}
+                    style={toggleActiveStyling('', currentBaseRoute)}
+                  >
+                    All
+                  </Nav.Link>
+                </NavDropdown.Item>
+                {categories.map((category) => (
+                  <NavDropdown.Item>
+                    <Nav.Link
+                      key={category.id}
+                      className="text-lowercase"
+                      onClick={() => navigate(`/${category.id}`)}
+                      style={toggleActiveStyling(category.id, currentBaseRoute)}
+                    >
+                      {category.label}
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                ))}
+              </NavDropdown>
               <Nav.Link
                 onClick={() => navigate('/about')}
                 style={toggleActiveStyling('about', currentBaseRoute)}
