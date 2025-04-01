@@ -14,6 +14,7 @@ const useUsersArticle = (articleId: string) => {
     isPublished: false,
     body: [],
     updatedAt: '',
+    categoryId: '',
   });
 
   const [usersArticleLoading, setUsersArticleLoading] =

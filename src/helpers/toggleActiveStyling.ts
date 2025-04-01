@@ -1,8 +1,12 @@
-const toggleActiveStyling = (route: string, currentRoute: string) => {
+const toggleActiveStyling = (
+  route: string,
+  currentRoute: string,
+  dark: boolean = true
+) => {
   if (route === currentRoute) {
     return {
       textDecoration: 'underline',
-      color: 'black',
+      color: dark ? 'white' : 'black',
     };
   }
 

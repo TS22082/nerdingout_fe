@@ -26,9 +26,11 @@ const ArticleForm: FC<NewArticleFormType> = ({
   );
 
   return (
-    <Form onSubmit={handleSave}>
+    <Form onSubmit={handleSave} data-bs-theme="dark">
       <Form.Group className="my-3">
-        <Form.Label column={true}>Category</Form.Label>
+        <Form.Label className="text-light" column={true}>
+          Category
+        </Form.Label>
         <Form.Select
           onChange={(e) =>
             handleFormChange(
@@ -42,7 +44,9 @@ const ArticleForm: FC<NewArticleFormType> = ({
             <option>{category.label}</option>
           ))}
         </Form.Select>
-        <Form.Label column={true}>Title</Form.Label>
+        <Form.Label className="text-light" column={true}>
+          Title
+        </Form.Label>
         <Form.Control
           required
           type="text"
@@ -52,7 +56,9 @@ const ArticleForm: FC<NewArticleFormType> = ({
         />
       </Form.Group>
       <Form.Group className="my-3">
-        <Form.Label column={true}>Cover Photo</Form.Label>
+        <Form.Label className="text-light" column={true}>
+          Cover Photo
+        </Form.Label>
         <Form.Control
           required
           type="text"
@@ -64,7 +70,9 @@ const ArticleForm: FC<NewArticleFormType> = ({
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label column={true}>Description</Form.Label>
+        <Form.Label className="text-light" column={true}>
+          Description
+        </Form.Label>
         <Form.Control
           required
           as="textarea"
@@ -81,7 +89,9 @@ const ArticleForm: FC<NewArticleFormType> = ({
           if (item.type === 'text') {
             return (
               <Form.Group key={index} className="mb-3">
-                <Form.Label column={true}>Text Section</Form.Label>
+                <Form.Label className="text-light" column={true}>
+                  Text Section
+                </Form.Label>
                 <Form.Control
                   required
                   as="textarea"
@@ -98,7 +108,9 @@ const ArticleForm: FC<NewArticleFormType> = ({
           if (item.type === 'image') {
             return (
               <Form.Group key={index} className="mb-3">
-                <Form.Label column={true}>Image Section</Form.Label>
+                <Form.Label className="text-light" column={true}>
+                  Image Section
+                </Form.Label>
                 <Form.Control
                   required
                   type="text"

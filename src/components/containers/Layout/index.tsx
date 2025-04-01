@@ -23,10 +23,18 @@ const Layout: FC<LayoutProps> = (props) => {
   return (
     <div style={layoutStyle}>
       <ToastContainer autoClose="1000" />
-      <Navbar sticky="top" expand="lg" className="bg-body-tertiary">
+      <Navbar
+        data-bs-theme="dark"
+        sticky="top"
+        expand="lg"
+        className="bg-body-tertiary"
+      >
         <Container>
           <Navbar.Brand>nerding_out</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            data-bs-theme="dark"
+          />
           <Navbar.Collapse
             id="basic-navbar-nav"
             className="justify-content-end"

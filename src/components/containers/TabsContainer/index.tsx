@@ -19,7 +19,7 @@ const TabsContainer: FC<TabsContainerProps> = ({
 }) => {
   return (
     <>
-      <Nav variant="tabs">
+      <Nav variant="tabs" data-bs-theme="dark">
         {Object.entries(tabs).map(([key, value]) => {
           return (
             <Nav.Link
@@ -28,7 +28,7 @@ const TabsContainer: FC<TabsContainerProps> = ({
               onClick={() => handleSetActiveTab(key)}
               style={{
                 textDecoration: 'none',
-                color: value ? 'black' : 'grey',
+                color: value ? 'white' : 'grey',
               }}
             >
               {capFirstLetter(key)}

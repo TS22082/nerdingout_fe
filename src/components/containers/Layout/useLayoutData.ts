@@ -11,7 +11,7 @@ const useLayoutData = () => {
 
   const layoutStyle = {
     minHeight: '100vh',
-    height: '100vh',
+    backgroundColor: '#2B3035',
   };
 
   const location = useLocation();

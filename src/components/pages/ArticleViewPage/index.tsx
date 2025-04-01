@@ -23,6 +23,7 @@ const ArticleViewPage = () => {
           height: '600px',
           backgroundImage: `url(${publishedArticle.coverPhoto})`,
           width: '100%',
+
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'center center',

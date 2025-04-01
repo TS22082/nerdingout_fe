@@ -44,6 +44,7 @@ const DashboardPage = () => {
             userArticles.map((article, index) => (
               <Col sm={12} md={6} xl={4}>
                 <Card
+                  data-bs-theme="dark"
                   style={{
                     marginTop: 10,
                   }}

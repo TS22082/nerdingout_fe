@@ -5,7 +5,7 @@ const ArticleCard = ({ article, categoryMapById }) => {
   const navigate = useNavigate();
 
   return (
-    <Card className="mt-3">
+    <Card className="mt-3" data-bs-theme="dark">
       <Card.Img
         variant="top"
         src={article.coverPhoto}
