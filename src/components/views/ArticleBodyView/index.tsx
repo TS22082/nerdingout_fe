@@ -21,6 +21,7 @@ const ArticleBodyView: FC<ArticleBodyProps> = ({ data }) => {
           remarkPlugins={[remarkGfm]}
           components={{
             ul: ({ ...props }) => <ul style={{ color: 'white' }} {...props} />,
+            p: ({ ...props }) => <p style={{ color: 'white' }} {...props} />,
             h1: ({ ...props }) => <h1 style={{ color: 'white' }} {...props} />,
             h2: ({ ...props }) => <h1 style={{ color: 'white' }} {...props} />,
             h3: ({ ...props }) => <h1 style={{ color: 'white' }} {...props} />,
