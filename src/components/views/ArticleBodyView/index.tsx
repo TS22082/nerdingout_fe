@@ -21,6 +21,10 @@ const ArticleBodyView: FC<ArticleBodyProps> = ({ data }) => {
           remarkPlugins={[remarkGfm]}
           components={{
             ul: ({ ...props }) => <ul style={{ color: 'white' }} {...props} />,
+            h1: ({ ...props }) => <h1 style={{ color: 'white' }} {...props} />,
+            h2: ({ ...props }) => <h1 style={{ color: 'white' }} {...props} />,
+            h3: ({ ...props }) => <h1 style={{ color: 'white' }} {...props} />,
+            h4: ({ ...props }) => <h1 style={{ color: 'white' }} {...props} />,
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
             code({ inline, className, children, ...props }) {

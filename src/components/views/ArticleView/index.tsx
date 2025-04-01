@@ -12,9 +12,14 @@ const ArticleView: FC<ArticleViewProps> = ({ data, children }) => {
 
   return (
     <>
-      {data.title && <h1 className="mb-3">{data.title}</h1>}
+      {data.title && <h1 className="mb-3 text-light">{data.title}</h1>}
       {data.coverPhoto && <div className="mb-3" style={imageStyles}></div>}
-      {data.description && <p className="mb-3">{data.description}</p>}
+      {data.description && (
+        <p className="mb-3 text-light">
+          {data.description}
+          {data.description}
+        </p>
+      )}
       {children}
     </>
   );
