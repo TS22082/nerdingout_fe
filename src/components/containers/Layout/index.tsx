@@ -5,6 +5,7 @@ import useLayoutData from './useLayoutData.ts';
 import { FiLogOut } from 'react-icons/fi';
 import { ToastContainer } from 'react-toastify';
 import { FC, ReactNode } from 'react';
+import { CategoryType } from '../../../types/types.ts';
 
 type LayoutProps = {
   children: ReactNode;
@@ -22,7 +23,7 @@ const Layout: FC<LayoutProps> = (props) => {
 
   return (
     <div style={layoutStyle}>
-      <ToastContainer autoClose="1000" />
+      <ToastContainer autoClose={1000} />
       <Navbar
         data-bs-theme="dark"
         sticky="top"
@@ -50,7 +51,7 @@ const Layout: FC<LayoutProps> = (props) => {
                     All
                   </Nav.Link>
                 </NavDropdown.Item>
-                {categories.map((category) => (
+                {categories.map((category: CategoryType) => (
                   <NavDropdown.Item>
                     <Nav.Link
                       key={category.id}

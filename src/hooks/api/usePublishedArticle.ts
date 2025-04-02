@@ -11,6 +11,7 @@ const usePublishedArticle = (articleId: string) => {
     isPublished: true,
     body: [],
     updatedAt: '',
+    categoryId: '',
   });
 
   const [publishedArticleLoading, setPublishedArticleLoading] =

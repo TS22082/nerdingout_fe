@@ -37,6 +37,16 @@ export type ArticleType = {
   categoryId: string;
 };
 
+export type CategoryType = {
+  id: string;
+  label: string;
+};
+
+export type ModalStateType = {
+  data: ArticleType | undefined;
+  open: boolean;
+};
+
 export type ArticleViewProps = {
   data: FormStateType;
   children: React.ReactNode;
@@ -53,7 +63,7 @@ export type DeleteArticlePropsTypes = {
   data: ArticleType | undefined;
 };
 
-export type CategoryType = {
-  id: string;
-  label: string;
+export type ArticleCardProps = {
+  article: ArticleType;
+  categoryMapById: Map<string, CategoryType>;
 };

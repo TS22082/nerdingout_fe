@@ -1,5 +1,6 @@
 import usePublishedArticles from '../../../hooks/api/usePublishedArticles.ts';
 import useCategories from '../../../hooks/api/useCategories.ts';
+import { CategoryType } from '../../../types/types.ts';
 
 const useLandingPageData = () => {
   const { publishedArticles, articlesLoading } = usePublishedArticles();
@@ -17,7 +18,7 @@ const useLandingPageData = () => {
 
   const categoryMapById = new Map();
 
-  categories.forEach((category) => {
+  categories.forEach((category: CategoryType) => {
     categoryMapById.set(category.id, category);
   });
 

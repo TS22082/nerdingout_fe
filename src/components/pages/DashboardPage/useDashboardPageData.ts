@@ -1,6 +1,11 @@
 import useUserArticles from '../../../hooks/api/useUserArticles.ts';
 import { useState } from 'react';
 import useCategories from '../../../hooks/api/useCategories.ts';
+import {
+  ArticleType,
+  CategoryType,
+  ModalStateType,
+} from '../../../types/types.ts';
 
 const useDashboardPageData = () => {
   const {
@@ -14,14 +19,15 @@ const useDashboardPageData = () => {
 
   const categoryMapById = new Map();
 
-  categories.forEach((category) => {
+  categories.forEach((category: CategoryType) => {
     categoryMapById.set(category.id, category);
   });
 
-  const [modalState, setModalState] = useState({
+  const [modalState, setModalState] = useState<ModalStateType>({
     open: false,
     data: undefined,
   });
+
   const authToken = localStorage.getItem('access_token');
 
   const handlePublishArticleToggle = async (index: number) => {
@@ -56,7 +62,7 @@ const useDashboardPageData = () => {
     });
   };
 
-  const handleOpenModal = (article) => {
+  const handleOpenModal = (article: ArticleType) => {
     setModalState({
       data: article,
       open: true,
@@ -91,6 +97,7 @@ const useDashboardPageData = () => {
     articlesLoading,
     categoryMapById,
     modalState,
+    categoriesLoading,
     handlePublishArticleToggle,
     closeModal,
     handleOpenModal,

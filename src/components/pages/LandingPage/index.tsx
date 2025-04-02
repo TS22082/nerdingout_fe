@@ -4,10 +4,10 @@ import { Col, Container, Row } from 'react-bootstrap';
 import useLandingPageData from './useLandingPageData.ts';
 
 const LandingPage = () => {
-  const { publishedArticles, pageLading, wrapperStyles, categoryMapById } =
+  const { publishedArticles, pageLoading, wrapperStyles, categoryMapById } =
     useLandingPageData();
 
-  if (pageLading) return <LoadingContainer />;
+  if (pageLoading) return <LoadingContainer />;
   return (
     <>
       <div style={wrapperStyles} />

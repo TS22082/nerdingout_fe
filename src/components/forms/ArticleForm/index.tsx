@@ -131,7 +131,7 @@ const ArticleForm: FC<NewArticleFormType> = ({
         }}
       >
         <DropdownButton
-          as={ButtonGroup as 'div'}
+          as={ButtonGroup as unknown as 'div'}
           title="New Section"
           id="bg-nested-dropdown"
         >
