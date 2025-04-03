@@ -21,8 +21,6 @@ const usePublishedArticle = (articleId: string) => {
   useEffect(() => {
     if (!articleId || !baseUrl) return;
 
-    console.log('Base URL', baseUrl);
-
     (async () => {
       try {
         const response = await fetch(
