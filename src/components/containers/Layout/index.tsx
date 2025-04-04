@@ -52,9 +52,8 @@ const Layout: FC<LayoutProps> = (props) => {
                   </Nav.Link>
                 </NavDropdown.Item>
                 {categories.map((category: CategoryType) => (
-                  <NavDropdown.Item>
+                  <NavDropdown.Item key={category.id}>
                     <Nav.Link
-                      key={category.id}
                       className="text-lowercase"
                       onClick={() => navigate(`/${category.id}`)}
                       style={toggleActiveStyling(category.id, currentBaseRoute)}
