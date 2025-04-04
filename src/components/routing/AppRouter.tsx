@@ -18,7 +18,7 @@ const AppRouter = () => {
       <Layout>
         <Routes>
           <Route
-            path=""
+            path="/"
             element={
               <Suspense fallback={<LoadingContainer />}>
                 <LandingPage />
@@ -34,7 +34,7 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="about"
+            path="/about"
             element={
               <Suspense fallback={<LoadingContainer />}>
                 <h1>about</h1>
@@ -42,7 +42,7 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="support"
+            path="/support"
             element={
               <Suspense fallback={<LoadingContainer />}>
                 <h1>support</h1>
@@ -50,7 +50,7 @@ const AppRouter = () => {
             }
           />
 
-          <Route path="auth">
+          <Route path="/auth">
             <Route
               path=""
               element={
