@@ -10,7 +10,7 @@ import {
 import useDashboardPageData from './useDashboardPageData.ts';
 import LoadingContainer from '../../containers/LoadingContainer';
 import DeleteArticleModal from '../../modals/DeleteArticleModal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 const DashboardPage = () => {
   const {

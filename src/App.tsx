@@ -1,4 +1,4 @@
-import { RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router';
 import useAppRoutes from './components/routing/useAppRoutes.tsx';
 
 const App = () => {

@@ -1,7 +1,7 @@
 import LoadingContainer from '../../containers/LoadingContainer';
 import { Col, Container, Row } from 'react-bootstrap';
 import PublishedArticleView from '../../views/PublishedArticleView';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import usePublishedArticle from '../../../hooks/api/usePublishedArticle.ts';
 import ArticleBodyView from '../../views/ArticleBodyView';
 

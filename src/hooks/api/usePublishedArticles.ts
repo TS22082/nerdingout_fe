@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArticleType } from '../../types/types.ts';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 const usePublishedArticles = () => {
   const [publishedArticles, setArticles] = useState<ArticleType[]>([]);

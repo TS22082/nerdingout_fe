@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useUserId } from '../../../hooks/state/useUserId.ts';
 import useCategories from '../../../hooks/api/useCategories.ts';

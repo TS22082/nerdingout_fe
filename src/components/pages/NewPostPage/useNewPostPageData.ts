@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { BodyEntryOptionsType, FormStateType } from '../../../types/types.ts';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import useCategories from '../../../hooks/api/useCategories.ts';
 
 const useNewPostPageData = () => {

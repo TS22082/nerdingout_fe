@@ -1,5 +1,5 @@
 import { useUserId } from '../../../hooks/state/useUserId.ts';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 type VerifyAuthPageData = {
   type: 'github' | 'google' | 'linkedin';

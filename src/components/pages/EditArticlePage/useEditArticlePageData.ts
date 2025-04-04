@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { ArticleType, BodyEntryOptionsType } from '../../../types/types.ts';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 import useUsersArticle from '../../../hooks/api/useUsersArticle.ts';
 import { toast } from 'react-toastify';
 import useCategories from '../../../hooks/api/useCategories.ts';
