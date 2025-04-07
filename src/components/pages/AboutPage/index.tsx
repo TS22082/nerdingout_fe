@@ -23,7 +23,7 @@ const AboutPage = () => {
                 ref={ref}
                 className={`text-light text-center fs-1 mb-5 mt-5 ${inView ? 'scrolled' : 'invisible'}`}
               >
-                Meet your host
+                Meet Your Host
               </h1>
             )}
           </InView>
