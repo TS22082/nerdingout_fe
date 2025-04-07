@@ -15,7 +15,7 @@ const AboutPage = () => {
     <>
       <div style={wrapperStyles} />
       <Container style={{ marginTop: 10 }}>
-        <h1 className="text-light text-center">Meet you host</h1>
+        <h1 className="text-light text-center">Meet your host</h1>
         <p className="text-light">
           Welcome to my little corner of the internet! I'm Thomas, and I'm
           thrilled to share my thoughts, experiences, and adventures with you
