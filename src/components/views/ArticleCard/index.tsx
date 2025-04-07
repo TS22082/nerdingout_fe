@@ -23,23 +23,21 @@ const ArticleCard: FC<ArticleCardProps> = ({ article, categoryMapById }) => {
       />
       <Card.Body>
         <Row>
-          <Col xs={8}>
-            <Card.Title className="text-body-primary text-truncate">
-              {article.title}{' '}
+          <Col
+            xs={8}
+            className="d-flex justify-content-start align-items-center"
+          >
+            <Card.Title className="text-truncate fs-2 m-0">
+              {article.title}
             </Card.Title>
           </Col>
-          <Col xs={4} className="d-flex justify-content-end">
-            <Badge
-              bg="secondary"
-              style={{
-                height: '21px',
-              }}
-            >
+          <Col xs={4} className="d-flex justify-content-end align-items-center">
+            <Badge bg="secondary">
               {categoryMapById.get(article.categoryId)?.label || ''}
             </Badge>
           </Col>
         </Row>
-        <Card.Text className="text-body-secodary text-truncate">
+        <Card.Text className="text-body-secodary text-truncate fs-5 mt-3">
           {article.description}
         </Card.Text>
         <Button
