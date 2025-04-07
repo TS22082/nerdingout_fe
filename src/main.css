@@ -1,3 +1,25 @@
 body {
     background-color: #2B3035;
 }
+
+.scrolled {
+    opacity: 0;
+    transform: translateY(20px);
+    animation:  scroll-in 3s forwards;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+@keyframes scroll-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
