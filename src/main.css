@@ -1,28 +1,3 @@
-:root {
-    --themm-color--:  #000000;
-}
-
-.hover-text-animation {
-    text-overflow: ellipsis;
-    position: relative;
-    display: inline-block;
-    color: var(--themm-color--);
-}
-
-.hover-text-animation::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--themm-color--);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform .25s ease-out;
-}
-
-.hover-text-animation:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+body {
+    background-color: #2B3035;
 }

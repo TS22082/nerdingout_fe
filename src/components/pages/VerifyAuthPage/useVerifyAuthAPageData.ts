@@ -13,8 +13,12 @@ const useVerifyAuthPageData = ({ type }: VerifyAuthPageData) => {
     if (type === 'github') {
       const queryParam = new URLSearchParams(window.location.search);
       const code = queryParam.get('code');
-
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+      if (!code || !baseUrl) {
+        return;
+      }
+
       const response = await fetch(`${baseUrl}/auth/gh?code=${code}`);
 
       if (!response.ok) {

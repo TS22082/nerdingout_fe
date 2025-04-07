@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import LoadingContainer from '../containers/LoadingContainer';
 import AuthProtected from '../containers/AuthProtected';
 import Layout from '../containers/Layout';
+import AboutPage from '../pages/AboutPage';
 
 const useAppRoutes = () => {
   const AuthPage = lazy(() => import('../pages/AuthPage'));
@@ -39,17 +40,7 @@ const useAppRoutes = () => {
       element: (
         <Suspense fallback={<LoadingContainer />}>
           <Layout>
-            <h1>about</h1>
-          </Layout>
-        </Suspense>
-      ),
-    },
-    {
-      path: '/support',
-      element: (
-        <Suspense fallback={<LoadingContainer />}>
-          <Layout>
-            <h1>support</h1>
+            <AboutPage />
           </Layout>
         </Suspense>
       ),

@@ -42,24 +42,21 @@ const Layout: FC<LayoutProps> = (props) => {
           >
             <Nav>
               <NavDropdown title="articles" id="nav-dropdown">
-                <NavDropdown.Item>
-                  <Nav.Link
-                    className="text-lowercase"
-                    onClick={() => navigate('/')}
-                    style={toggleActiveStyling('', currentBaseRoute)}
-                  >
-                    All
-                  </Nav.Link>
+                <NavDropdown.Item
+                  onClick={() => navigate('/')}
+                  className="text-lowercase"
+                  style={toggleActiveStyling('', currentBaseRoute)}
+                >
+                  All
                 </NavDropdown.Item>
                 {categories.map((category: CategoryType) => (
-                  <NavDropdown.Item key={category.id}>
-                    <Nav.Link
-                      className="text-lowercase"
-                      onClick={() => navigate(`/${category.id}`)}
-                      style={toggleActiveStyling(category.id, currentBaseRoute)}
-                    >
-                      {category.label}
-                    </Nav.Link>
+                  <NavDropdown.Item
+                    key={category.id}
+                    className="text-lowercase"
+                    onClick={() => navigate(`/${category.id}`)}
+                    style={toggleActiveStyling(category.id, currentBaseRoute)}
+                  >
+                    {category.label}
                   </NavDropdown.Item>
                 ))}
               </NavDropdown>
@@ -69,45 +66,31 @@ const Layout: FC<LayoutProps> = (props) => {
               >
                 about
               </Nav.Link>
-              <Nav.Link
-                onClick={() => navigate('/support')}
-                style={toggleActiveStyling('support', currentBaseRoute)}
-              >
-                support
-              </Nav.Link>
               {isLoggedIn && (
                 <NavDropdown title="user" id="nav-dropdown">
-                  <NavDropdown.Item>
-                    <Nav.Link
-                      onClick={() => navigate('/profile')}
-                      style={toggleActiveStyling('profile', currentBaseRoute)}
-                    >
-                      profile
-                    </Nav.Link>
+                  <NavDropdown.Item
+                    onClick={() => navigate('/profile')}
+                    style={toggleActiveStyling('profile', currentBaseRoute)}
+                  >
+                    profile
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Nav.Link
-                      onClick={() => navigate('/dashboard')}
-                      style={toggleActiveStyling('dashboard', currentBaseRoute)}
-                    >
-                      dashboard
-                    </Nav.Link>
+                  <NavDropdown.Item
+                    onClick={() => navigate('/dashboard')}
+                    style={toggleActiveStyling('dashboard', currentBaseRoute)}
+                  >
+                    dashboard
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Nav.Link
-                      onClick={() => navigate('/new')}
-                      style={toggleActiveStyling('new', currentBaseRoute)}
-                    >
-                      new
-                    </Nav.Link>
+                  <NavDropdown.Item
+                    onClick={() => navigate('/new')}
+                    style={toggleActiveStyling('new', currentBaseRoute)}
+                  >
+                    new
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Nav.Link
-                      onClick={() => handleLogout()}
-                      style={toggleActiveStyling('logout', currentBaseRoute)}
-                    >
-                      <FiLogOut />
-                    </Nav.Link>
+                  <NavDropdown.Item
+                    onClick={() => handleLogout()}
+                    style={toggleActiveStyling('logout', currentBaseRoute)}
+                  >
+                    <FiLogOut />
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
