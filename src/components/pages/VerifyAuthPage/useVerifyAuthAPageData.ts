@@ -22,10 +22,13 @@ const useVerifyAuthPageData = ({ type }: VerifyAuthPageData) => {
       const response = await fetch(`${baseUrl}/auth/gh?code=${code}`);
 
       if (!response.ok) {
+        console.log('response ==>', response);
         throw new Error('Network response was not ok');
       }
 
       const data = await response.json();
+
+      console.log('data ==>', data);
 
       if (!data?.user?.id || !data.token) return;
 
