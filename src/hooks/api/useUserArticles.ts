@@ -23,8 +23,8 @@ const useUserArticles = () => {
 
         setUserArticles(data);
         setArticlesLoading(false);
-      } catch (e) {
-        console.error(e);
+      } catch (err) {
+        console.error('useUsersArticles ==> ', err);
         setArticlesLoading(false);
       }
     })();

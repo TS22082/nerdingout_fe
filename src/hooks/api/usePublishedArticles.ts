@@ -22,8 +22,9 @@ const usePublishedArticles = () => {
 
         setArticles(data);
         setArticlesLoading(false);
-      } catch (e) {
-        console.error(e);
+      } catch (err) {
+        console.error('usePublishedArticle ==> ', err);
+
         setArticlesLoading(false);
       }
     })();

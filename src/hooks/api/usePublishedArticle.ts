@@ -31,7 +31,7 @@ const usePublishedArticle = (articleId: string) => {
         setPublishedArticleLoading(false);
         setPublishedArticle(data);
       } catch (err) {
-        console.error('backend error ==>', err);
+        console.error('usePublishedArticle ==>', err);
         setPublishedArticleLoading(false);
       }
     })();

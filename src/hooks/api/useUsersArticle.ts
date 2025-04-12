@@ -31,11 +31,10 @@ const useUsersArticle = (articleId: string) => {
         });
         const data = await response.json();
 
-        console.log('what is this ==>', data);
         setUsersArticleLoading(false);
         setUsersArticle(data);
       } catch (err) {
-        console.error('Failed ==>', err);
+        console.error('useUsersArticles ==> ', err);
         setUsersArticleLoading(false);
       }
     })();
