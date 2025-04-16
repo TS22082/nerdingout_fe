@@ -16,7 +16,8 @@ const Layout: FC<LayoutProps> = (props) => {
     layoutStyle,
     currentBaseRoute,
     isLoggedIn,
-    categories,
+    publishedCategories,
+    publishedCategoriesLoading,
     handleLogout,
   } = useLayoutData();
   const navigate = useNavigate();
@@ -49,7 +50,8 @@ const Layout: FC<LayoutProps> = (props) => {
                 >
                   All
                 </NavDropdown.Item>
-                {categories.map((category: CategoryType) => (
+                {publishedCategoriesLoading && 'Loading ...'}
+                {publishedCategories.map((category: CategoryType) => (
                   <NavDropdown.Item
                     key={category.id}
                     className="text-lowercase"

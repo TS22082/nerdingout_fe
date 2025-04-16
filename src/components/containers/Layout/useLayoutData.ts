@@ -1,11 +1,13 @@
 import { useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useUserId } from '../../../hooks/state/useUserId.ts';
-import useCategories from '../../../hooks/api/useCategories.ts';
+import usePublishedCategories from '../../../hooks/api/usePublishedCategories.ts';
 
 const useLayoutData = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { categories, categoriesLoading } = useCategories();
+  const { publishedCategories, publishedCategoriesLoading } =
+    usePublishedCategories();
+
   const { userId, setUserId } = useUserId();
   const authToken = localStorage.getItem('access_token');
 
@@ -56,8 +58,8 @@ const useLayoutData = () => {
     isLoggedIn,
     layoutStyle,
     currentBaseRoute,
-    categories,
-    categoriesLoading,
+    publishedCategories,
+    publishedCategoriesLoading,
     handleLogout,
   };
 };

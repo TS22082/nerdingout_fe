@@ -1,11 +1,11 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import { lazy, Suspense } from 'react';
 import LoadingContainer from '../containers/LoadingContainer';
 import AuthProtected from '../containers/AuthProtected';
 import Layout from '../containers/Layout';
 import AboutPage from '../pages/AboutPage';
 
-const useAppRoutes = () => {
+const AppRoutes = () => {
   const AuthPage = lazy(() => import('../pages/AuthPage'));
   const VerifyAuthPage = lazy(() => import('../pages/VerifyAuthPage'));
   const ArticleViewPage = lazy(() => import('../pages/ArticleViewPage'));
@@ -69,11 +69,11 @@ const useAppRoutes = () => {
       path: '/new',
       element: (
         <Suspense fallback={<LoadingContainer />}>
-          <Layout>
-            <AuthProtected>
+          <AuthProtected>
+            <Layout>
               <NewPostPage />
-            </AuthProtected>
-          </Layout>
+            </Layout>
+          </AuthProtected>
         </Suspense>
       ),
     },
@@ -103,11 +103,11 @@ const useAppRoutes = () => {
       path: '/dashboard',
       element: (
         <Suspense fallback={<LoadingContainer />}>
-          <AuthProtected>
-            <Layout>
+          <Layout>
+            <AuthProtected>
               <DashboardPage />
-            </Layout>
-          </AuthProtected>
+            </AuthProtected>
+          </Layout>
         </Suspense>
       ),
     },
@@ -125,7 +125,7 @@ const useAppRoutes = () => {
     },
   ];
 
-  return createBrowserRouter(routes);
+  return <RouterProvider router={createBrowserRouter(routes)} />;
 };
 
-export default useAppRoutes;
+export default AppRoutes;
