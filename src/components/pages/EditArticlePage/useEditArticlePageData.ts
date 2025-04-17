@@ -12,7 +12,7 @@ const useEditPostPageData = () => {
     edit: true,
     preview: false,
   });
-  const { categories } = useCategories();
+  const { categories, categoriesLoading } = useCategories();
 
   const { articleId } = useParams();
   const [formState, setFormState] = useState<ArticleType>({
@@ -105,6 +105,7 @@ const useEditPostPageData = () => {
     formState,
     usersArticleLoading,
     categories,
+    categoriesLoading,
     handleBodyChange,
     handleSetActiveTab,
     handleFormChange,

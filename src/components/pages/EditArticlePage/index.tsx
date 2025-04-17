@@ -4,18 +4,25 @@ import ArticleForm from '../../forms/ArticleForm';
 import ArticleView from '../../views/ArticleView';
 import ArticleBodyView from '../../views/ArticleBodyView';
 import useEditPostPageData from './useEditArticlePageData.ts';
+import LoadingContainer from '../../containers/LoadingContainer';
 
 const EditArticlePage = () => {
   const {
     activeTab,
     formState,
     categories,
+    categoriesLoading,
     handleSetActiveTab,
     handleFormChange,
     handleNewBodyItem,
     handleBodyChange,
     handleSave,
   } = useEditPostPageData();
+
+  if (categoriesLoading) {
+    return <LoadingContainer />;
+  }
+
   return (
     <Container className="mt-5">
       <Row>
