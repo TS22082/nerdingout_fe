@@ -30,7 +30,7 @@ const ArticleViewPage = () => {
       />
       <Container>
         <Row>
-          <Col xs={12} sm={12} md={{ span: 6, offset: 3 }}>
+          <Col xs={12} sm={12} md={{ span: 8, offset: 2 }}>
             <PublishedArticleView data={usersArticle}>
               <ArticleBodyView data={usersArticle} />
             </PublishedArticleView>

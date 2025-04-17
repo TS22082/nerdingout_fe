@@ -1,5 +1,13 @@
-import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router';
+import {
+  Badge,
+  Button,
+  Card,
+  Col,
+  Row,
+  OverlayTrigger,
+  Tooltip,
+} from 'react-bootstrap';
+import { useNavigate, NavLink } from 'react-router';
 import { FC } from 'react';
 import { ArticleCardProps } from '../../../types/types.ts';
 
@@ -23,15 +31,16 @@ const ArticleCard: FC<ArticleCardProps> = ({ article, categoryMapById }) => {
       />
       <Card.Body>
         <Row>
-          <Col
-            xs={8}
-            className="d-flex justify-content-start align-items-center"
-          >
-            <Card.Title className="text-truncate fs-2 m-0">
-              {article.title}
-            </Card.Title>
+          <Col xs={10} className="d-flex justify-content-start">
+            <OverlayTrigger overlay={<Tooltip>{article.title}</Tooltip>}>
+              <Card.Title className="text-truncate fs-2 m-0">
+                <NavLink className="articleLink" to={`/article/${article.id}`}>
+                  {article.title}
+                </NavLink>
+              </Card.Title>
+            </OverlayTrigger>
           </Col>
-          <Col xs={4} className="d-flex justify-content-end align-items-center">
+          <Col xs={2} className="d-flex justify-content-end align-items-center">
             <Badge bg="secondary">
               {categoryMapById.get(article.categoryId)?.label || ''}
             </Badge>
