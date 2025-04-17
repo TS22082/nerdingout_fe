@@ -1,9 +1,5 @@
 import { create } from 'zustand';
-
-type UidState = {
-  userId: string;
-  setUserId: (userId: string) => void;
-};
+import { UidState } from '../../types/types.ts';
 
 export const useUserId = create<UidState>((set) => ({
   userId: '',

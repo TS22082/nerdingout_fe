@@ -67,3 +67,8 @@ export type ArticleCardProps = {
   article: ArticleType;
   categoryMapById: Map<string, CategoryType>;
 };
+
+export type UidState = {
+  userId: string;
+  setUserId: (userId: string) => void;
+};
