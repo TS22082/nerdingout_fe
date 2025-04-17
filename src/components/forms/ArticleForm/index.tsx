@@ -40,9 +40,8 @@ const ArticleForm: FC<NewArticleFormType> = ({
           }
           value={CategoryMapById.get(formState.categoryId)?.label}
         >
-          {categories.map((category) => (
-            <option>{category.label}</option>
-          ))}
+          {categories.length &&
+            categories.map((category) => <option>{category.label}</option>)}
         </Form.Select>
         <Form.Label className="text-light" column={true}>
           Title
