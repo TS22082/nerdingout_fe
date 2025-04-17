@@ -9,9 +9,9 @@ type ViewData = {
 const PublishedArticleView: FC<ViewData> = ({ data, children }) => {
   return (
     <>
-      {data.title && <h1 className="mb-3 text-light">{data.title}</h1>}
+      {data.title && <h1 className="mb-3 text-light fs-1">{data.title}</h1>}
       {data.description && (
-        <p className="mb-3 text-light">{data.description}</p>
+        <p className="mb-3 text-light fs-5">{data.description}</p>
       )}
       {children}
     </>
