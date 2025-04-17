@@ -92,7 +92,9 @@ const DashboardPage = () => {
 
                         <Dropdown.Menu>
                           <Dropdown.Item
-                            onClick={() => navigate(`/article/${article.id}`)}
+                            onClick={() =>
+                              navigate(`/dashboard/article/${article.id}`)
+                            }
                           >
                             View
                           </Dropdown.Item>

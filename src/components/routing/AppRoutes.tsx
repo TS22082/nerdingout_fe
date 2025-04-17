@@ -13,6 +13,9 @@ const AppRoutes = () => {
   const NewPostPage = lazy(() => import('../pages/NewPostPage'));
   const DashboardPage = lazy(() => import('../pages/DashboardPage'));
   const EditArticlePage = lazy(() => import('../pages/EditArticlePage'));
+  const UsersArticleViewPage = lazy(
+    () => import('../pages/UsersArticleViewPage')
+  );
 
   const routes = [
     {
@@ -106,6 +109,18 @@ const AppRoutes = () => {
           <Layout>
             <AuthProtected>
               <DashboardPage />
+            </AuthProtected>
+          </Layout>
+        </Suspense>
+      ),
+    },
+    {
+      path: '/dashboard/article/:articleId',
+      element: (
+        <Suspense fallback={<LoadingContainer />}>
+          <Layout>
+            <AuthProtected>
+              <UsersArticleViewPage />
             </AuthProtected>
           </Layout>
         </Suspense>

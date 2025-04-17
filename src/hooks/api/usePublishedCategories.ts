@@ -17,7 +17,6 @@ const usePublishedCategories = () => {
         const response = await fetch(`${baseUrl}/categories/published`);
         const data = await response.json();
 
-        console.log('data ==>', data);
         setPublishedCategories(data || []);
         setPublishedCategoriesLoading(false);
       } catch (e) {
