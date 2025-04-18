@@ -3,7 +3,7 @@ import { CategoryType } from '../../types/types.ts';
 
 const useCategories = () => {
   const [categories, setCategories] = useState<CategoryType[]>([]);
-  const [categoriesLoading, setCategoriesLoading] = useState(false);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
