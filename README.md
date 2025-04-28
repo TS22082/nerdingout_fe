@@ -44,4 +44,4 @@ In the future, we plan to:
 ## License
 ---------
 
-This project is licensed under the MIT License. See `LICENSE` for details.
+Steal it - have fun. Make a cooler version and brag about it.
