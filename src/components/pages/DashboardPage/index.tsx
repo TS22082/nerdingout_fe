@@ -19,6 +19,7 @@ const DashboardPage = () => {
     handlePublishArticleToggle,
     modalState,
     categoryMapById,
+    categoriesLoading,
     closeModal,
     handleOpenModal,
     handleDeleteSubmit,
@@ -26,7 +27,7 @@ const DashboardPage = () => {
 
   const navigate = useNavigate();
 
-  if (articlesLoading) {
+  if (articlesLoading || categoriesLoading) {
     return <LoadingContainer />;
   }
 
