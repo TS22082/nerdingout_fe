@@ -96,10 +96,10 @@ const AboutPage = () => {
                 ref={ref}
                 className={`text-light fs-5 ${inView ? 'scrolled' : 'invisible'}`}
               >
-                Thanks for joining me on this journey (pun intended again!). If
-                you have any questions, comments, or just want to say hi, please
-                don't hesitate to reach out. I'm excited to share my thoughts
-                and experiences with you!
+                Thanks for joining me on this journey. If you have any
+                questions, comments, or just want to say hi, please don't
+                hesitate to reach out. I'm excited to share my thoughts and
+                experiences with you!
               </p>
             )}
           </InView>
